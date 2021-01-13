@@ -36,17 +36,17 @@ class PolesApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def create_pole(self, **kwargs):  # noqa: E501
+    def create_pole(self, pole_request, **kwargs):  # noqa: E501
         """Create Pole  # noqa: E501
 
         For an authenticated user, this method allows the user to create a pole  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_pole(async_req=True)
+        >>> thread = api.create_pole(pole_request, async_req=True)
         >>> result = thread.get()
 
-        :param pole_request: The pole to be created
+        :param pole_request: The pole to be created (required)
         :type pole_request: PoleRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -64,19 +64,19 @@ class PolesApi(object):
         :rtype: Pole
         """
         kwargs['_return_http_data_only'] = True
-        return self.create_pole_with_http_info(**kwargs)  # noqa: E501
+        return self.create_pole_with_http_info(pole_request, **kwargs)  # noqa: E501
 
-    def create_pole_with_http_info(self, **kwargs):  # noqa: E501
+    def create_pole_with_http_info(self, pole_request, **kwargs):  # noqa: E501
         """Create Pole  # noqa: E501
 
         For an authenticated user, this method allows the user to create a pole  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_pole_with_http_info(async_req=True)
+        >>> thread = api.create_pole_with_http_info(pole_request, async_req=True)
         >>> result = thread.get()
 
-        :param pole_request: The pole to be created
+        :param pole_request: The pole to be created (required)
         :type pole_request: PoleRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -124,6 +124,10 @@ class PolesApi(object):
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
+        # verify the required parameter 'pole_request' is set
+        if self.api_client.client_side_validation and ('pole_request' not in local_var_params or  # noqa: E501
+                                                        local_var_params['pole_request'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `pole_request` when calling `create_pole`")  # noqa: E501
 
         collection_formats = {}
 
@@ -706,22 +710,22 @@ class PolesApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def update_pole(self, id, **kwargs):  # noqa: E501
+    def update_pole(self, id, pole_request, **kwargs):  # noqa: E501
         """Update Pole  # noqa: E501
 
         For an authenticated user, this method allows the user to update a pole, if he has access to it  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_pole(id, async_req=True)
+        >>> thread = api.update_pole(id, pole_request, async_req=True)
         >>> result = thread.get()
 
         :param id: The id of the pole to be updated (required)
         :type id: int
+        :param pole_request: The pole to be updated (required)
+        :type pole_request: PoleRequest
         :param clear_contents: If this flag is set, the pole parts are cleared and are populated with the pole parts in the json payload. If it is not set, the pole parts in the payload are appended to the existing pole parts
         :type clear_contents: bool
-        :param pole_request: The pole to be updated
-        :type pole_request: PoleRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -738,24 +742,24 @@ class PolesApi(object):
         :rtype: Pole
         """
         kwargs['_return_http_data_only'] = True
-        return self.update_pole_with_http_info(id, **kwargs)  # noqa: E501
+        return self.update_pole_with_http_info(id, pole_request, **kwargs)  # noqa: E501
 
-    def update_pole_with_http_info(self, id, **kwargs):  # noqa: E501
+    def update_pole_with_http_info(self, id, pole_request, **kwargs):  # noqa: E501
         """Update Pole  # noqa: E501
 
         For an authenticated user, this method allows the user to update a pole, if he has access to it  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_pole_with_http_info(id, async_req=True)
+        >>> thread = api.update_pole_with_http_info(id, pole_request, async_req=True)
         >>> result = thread.get()
 
         :param id: The id of the pole to be updated (required)
         :type id: int
+        :param pole_request: The pole to be updated (required)
+        :type pole_request: PoleRequest
         :param clear_contents: If this flag is set, the pole parts are cleared and are populated with the pole parts in the json payload. If it is not set, the pole parts in the payload are appended to the existing pole parts
         :type clear_contents: bool
-        :param pole_request: The pole to be updated
-        :type pole_request: PoleRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -783,8 +787,8 @@ class PolesApi(object):
 
         all_params = [
             'id',
-            'clear_contents',
-            'pole_request'
+            'pole_request',
+            'clear_contents'
         ]
         all_params.extend(
             [
@@ -808,6 +812,10 @@ class PolesApi(object):
         if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
                                                         local_var_params['id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `update_pole`")  # noqa: E501
+        # verify the required parameter 'pole_request' is set
+        if self.api_client.client_side_validation and ('pole_request' not in local_var_params or  # noqa: E501
+                                                        local_var_params['pole_request'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `pole_request` when calling `update_pole`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and local_var_params['id'] < 1:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `id` when calling `update_pole`, must be a value greater than or equal to `1`")  # noqa: E501

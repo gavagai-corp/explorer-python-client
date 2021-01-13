@@ -14,8 +14,8 @@ Method | HTTP request | Description
 [**get_compiled_graph_share_data**](DashboardsApi.md#get_compiled_graph_share_data) | **GET** /projects/{id}/explore/dashboard/graphs/sharedata | Retrieve the compiled graph data
 [**get_compiled_graph_share_data_progress**](DashboardsApi.md#get_compiled_graph_share_data_progress) | **GET** /projects/{id}/explore/dashboard/graphs/sharedata/progress | Retrieve the progress
 [**get_graphs_for_project**](DashboardsApi.md#get_graphs_for_project) | **GET** /projects/{id}/explore/dashboard/graphs | Get a list of graphs.
-[**get_groupd_comparison_graph_data**](DashboardsApi.md#get_groupd_comparison_graph_data) | **GET** /projects/{id}/explore/dashboard/graphs/{graphId}/grouped_comparison | Get Grouped Comparison Graph
 [**get_grouped_comparison_graph_context**](DashboardsApi.md#get_grouped_comparison_graph_context) | **GET** /projects/{id}/explore/dashboard/graphs/comparison_grouped_context | Get Grouped Comparison Graph Context
+[**get_grouped_comparison_graph_data**](DashboardsApi.md#get_grouped_comparison_graph_data) | **GET** /projects/{id}/explore/dashboard/graphs/{graphId}/grouped_comparison | Get Grouped Comparison Graph
 [**get_high_impact_association_graph_container**](DashboardsApi.md#get_high_impact_association_graph_container) | **GET** /projects/{id}/explore/dashboard/graphs/{graphId}/highimpactassociation | Get High Impact Topic Associations Graph
 [**get_high_impact_graph_data**](DashboardsApi.md#get_high_impact_graph_data) | **GET** /projects/{id}/explore/dashboard/graphs/{graphId}/highimpact | Get High Impact Topics Graph
 [**get_net_sentiment_timeseries_graph_data**](DashboardsApi.md#get_net_sentiment_timeseries_graph_data) | **GET** /projects/{id}/explore/dashboard/topic_graphs/{graphId}/topics/{topicId}/netsentiment_timeseries | Get the Net Sentiment Timeseries
@@ -48,7 +48,7 @@ Method | HTTP request | Description
 
 
 # **create_dashboard_graph**
-> GraphInfo create_dashboard_graph(id, create_graph_request=create_graph_request)
+> GraphInfo create_dashboard_graph(id, create_graph_request)
 
 Create Graph
 
@@ -85,11 +85,11 @@ with explorer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = explorer_client.DashboardsApi(api_client)
     id = 56 # int | The project identifier
-create_graph_request = explorer_client.CreateGraphRequest() # CreateGraphRequest | The graph creation request (optional)
+create_graph_request = explorer_client.CreateGraphRequest() # CreateGraphRequest | The graph creation request
 
     try:
         # Create Graph
-        api_response = api_instance.create_dashboard_graph(id, create_graph_request=create_graph_request)
+        api_response = api_instance.create_dashboard_graph(id, create_graph_request)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling DashboardsApi->create_dashboard_graph: %s\n" % e)
@@ -100,7 +100,7 @@ create_graph_request = explorer_client.CreateGraphRequest() # CreateGraphRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The project identifier | 
- **create_graph_request** | [**CreateGraphRequest**](CreateGraphRequest.md)| The graph creation request | [optional] 
+ **create_graph_request** | [**CreateGraphRequest**](CreateGraphRequest.md)| The graph creation request | 
 
 ### Return type
 
@@ -123,7 +123,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_topic_graph**
-> TopicGraphInfo create_topic_graph(id, topic_graph_create_request=topic_graph_create_request)
+> TopicGraphInfo create_topic_graph(id, topic_graph_create_request)
 
 Create topic Graphs
 
@@ -160,11 +160,11 @@ with explorer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = explorer_client.DashboardsApi(api_client)
     id = 56 # int | The project identifier
-topic_graph_create_request = explorer_client.TopicGraphCreateRequest() # TopicGraphCreateRequest | The topic graph creation request (optional)
+topic_graph_create_request = explorer_client.TopicGraphCreateRequest() # TopicGraphCreateRequest | The topic graph creation request
 
     try:
         # Create topic Graphs
-        api_response = api_instance.create_topic_graph(id, topic_graph_create_request=topic_graph_create_request)
+        api_response = api_instance.create_topic_graph(id, topic_graph_create_request)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling DashboardsApi->create_topic_graph: %s\n" % e)
@@ -175,7 +175,7 @@ topic_graph_create_request = explorer_client.TopicGraphCreateRequest() # TopicGr
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The project identifier | 
- **topic_graph_create_request** | [**TopicGraphCreateRequest**](TopicGraphCreateRequest.md)| The topic graph creation request | [optional] 
+ **topic_graph_create_request** | [**TopicGraphCreateRequest**](TopicGraphCreateRequest.md)| The topic graph creation request | 
 
 ### Return type
 
@@ -791,81 +791,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_groupd_comparison_graph_data**
-> GroupedComparisonGraphResponse get_groupd_comparison_graph_data(id, graph_id)
-
-Get Grouped Comparison Graph
-
-Get grouped comparison graph data
-
-### Example
-
-* Basic Authentication (basicAuth):
-```python
-from __future__ import print_function
-import time
-import explorer_client
-from explorer_client.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://api.gavagai.se/explorer/v1
-# See configuration.py for a list of all supported configuration parameters.
-configuration = explorer_client.Configuration(
-    host = "https://api.gavagai.se/explorer/v1"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure HTTP basic authorization: basicAuth
-configuration = explorer_client.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with explorer_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = explorer_client.DashboardsApi(api_client)
-    id = 56 # int | The project identifier
-graph_id = 'graph_id_example' # str | The graph identifier
-
-    try:
-        # Get Grouped Comparison Graph
-        api_response = api_instance.get_groupd_comparison_graph_data(id, graph_id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling DashboardsApi->get_groupd_comparison_graph_data: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The project identifier | 
- **graph_id** | **str**| The graph identifier | 
-
-### Return type
-
-[**GroupedComparisonGraphResponse**](GroupedComparisonGraphResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | The result of the comparison calculation |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **get_grouped_comparison_graph_context**
 > ComparisonGraphContext get_grouped_comparison_graph_context(id)
 
@@ -936,6 +861,81 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Success |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_grouped_comparison_graph_data**
+> GroupedComparisonGraphResponse get_grouped_comparison_graph_data(id, graph_id)
+
+Get Grouped Comparison Graph
+
+Get grouped comparison graph data
+
+### Example
+
+* Basic Authentication (basicAuth):
+```python
+from __future__ import print_function
+import time
+import explorer_client
+from explorer_client.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.gavagai.se/explorer/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = explorer_client.Configuration(
+    host = "https://api.gavagai.se/explorer/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = explorer_client.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Enter a context with an instance of the API client
+with explorer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = explorer_client.DashboardsApi(api_client)
+    id = 56 # int | The project identifier
+graph_id = 'graph_id_example' # str | The graph identifier
+
+    try:
+        # Get Grouped Comparison Graph
+        api_response = api_instance.get_grouped_comparison_graph_data(id, graph_id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling DashboardsApi->get_grouped_comparison_graph_data: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The project identifier | 
+ **graph_id** | **str**| The graph identifier | 
+
+### Return type
+
+[**GroupedComparisonGraphResponse**](GroupedComparisonGraphResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The result of the comparison calculation |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1695,7 +1695,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **modify_dashboard_graph**
-> GraphInfo modify_dashboard_graph(id, graph_id, create_graph_request=create_graph_request)
+> GraphInfo modify_dashboard_graph(id, graph_id, create_graph_request)
 
 Update Graph
 
@@ -1733,11 +1733,11 @@ with explorer_client.ApiClient(configuration) as api_client:
     api_instance = explorer_client.DashboardsApi(api_client)
     id = 56 # int | The project identifier
 graph_id = 'graph_id_example' # str | The graph identifier
-create_graph_request = explorer_client.CreateGraphRequest() # CreateGraphRequest | The graph update request (optional)
+create_graph_request = explorer_client.CreateGraphRequest() # CreateGraphRequest | The graph update request
 
     try:
         # Update Graph
-        api_response = api_instance.modify_dashboard_graph(id, graph_id, create_graph_request=create_graph_request)
+        api_response = api_instance.modify_dashboard_graph(id, graph_id, create_graph_request)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling DashboardsApi->modify_dashboard_graph: %s\n" % e)
@@ -1749,7 +1749,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The project identifier | 
  **graph_id** | **str**| The graph identifier | 
- **create_graph_request** | [**CreateGraphRequest**](CreateGraphRequest.md)| The graph update request | [optional] 
+ **create_graph_request** | [**CreateGraphRequest**](CreateGraphRequest.md)| The graph update request | 
 
 ### Return type
 
@@ -1772,7 +1772,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **set_associations_timeseries_graph_context**
-> set_associations_timeseries_graph_context(id, graph_id, associations_timeseries_graph_context=associations_timeseries_graph_context)
+> set_associations_timeseries_graph_context(id, graph_id, associations_timeseries_graph_context)
 
 Update the context of the Associations Timeseries graph data
 
@@ -1810,11 +1810,11 @@ with explorer_client.ApiClient(configuration) as api_client:
     api_instance = explorer_client.DashboardsApi(api_client)
     id = 56 # int | The project identifier
 graph_id = 'graph_id_example' # str | The graph identifier
-associations_timeseries_graph_context = explorer_client.AssociationsTimeseriesGraphContext() # AssociationsTimeseriesGraphContext | The request body (optional)
+associations_timeseries_graph_context = explorer_client.AssociationsTimeseriesGraphContext() # AssociationsTimeseriesGraphContext | The request body
 
     try:
         # Update the context of the Associations Timeseries graph data
-        api_instance.set_associations_timeseries_graph_context(id, graph_id, associations_timeseries_graph_context=associations_timeseries_graph_context)
+        api_instance.set_associations_timeseries_graph_context(id, graph_id, associations_timeseries_graph_context)
     except ApiException as e:
         print("Exception when calling DashboardsApi->set_associations_timeseries_graph_context: %s\n" % e)
 ```
@@ -1825,7 +1825,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The project identifier | 
  **graph_id** | **str**| The graph identifier | 
- **associations_timeseries_graph_context** | [**AssociationsTimeseriesGraphContext**](AssociationsTimeseriesGraphContext.md)| The request body | [optional] 
+ **associations_timeseries_graph_context** | [**AssociationsTimeseriesGraphContext**](AssociationsTimeseriesGraphContext.md)| The request body | 
 
 ### Return type
 
@@ -1848,7 +1848,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **set_net_sentiment_timeseries_graph_context**
-> set_net_sentiment_timeseries_graph_context(id, graph_id, net_sentiment_timeseries_graph_context=net_sentiment_timeseries_graph_context)
+> set_net_sentiment_timeseries_graph_context(id, graph_id, net_sentiment_timeseries_graph_context)
 
 Update Net Sentiment Timeseries Context
 
@@ -1886,11 +1886,11 @@ with explorer_client.ApiClient(configuration) as api_client:
     api_instance = explorer_client.DashboardsApi(api_client)
     id = 56 # int | The project identifier
 graph_id = 'graph_id_example' # str | The graph identifier
-net_sentiment_timeseries_graph_context = explorer_client.NetSentimentTimeseriesGraphContext() # NetSentimentTimeseriesGraphContext | The request body (optional)
+net_sentiment_timeseries_graph_context = explorer_client.NetSentimentTimeseriesGraphContext() # NetSentimentTimeseriesGraphContext | The request body
 
     try:
         # Update Net Sentiment Timeseries Context
-        api_instance.set_net_sentiment_timeseries_graph_context(id, graph_id, net_sentiment_timeseries_graph_context=net_sentiment_timeseries_graph_context)
+        api_instance.set_net_sentiment_timeseries_graph_context(id, graph_id, net_sentiment_timeseries_graph_context)
     except ApiException as e:
         print("Exception when calling DashboardsApi->set_net_sentiment_timeseries_graph_context: %s\n" % e)
 ```
@@ -1901,7 +1901,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The project identifier | 
  **graph_id** | **str**| The graph identifier | 
- **net_sentiment_timeseries_graph_context** | [**NetSentimentTimeseriesGraphContext**](NetSentimentTimeseriesGraphContext.md)| The request body | [optional] 
+ **net_sentiment_timeseries_graph_context** | [**NetSentimentTimeseriesGraphContext**](NetSentimentTimeseriesGraphContext.md)| The request body | 
 
 ### Return type
 
@@ -1924,7 +1924,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **set_topic_average_score_matrix_graph_context**
-> set_topic_average_score_matrix_graph_context(id, graph_id, topic_average_score_matrix_graph_context=topic_average_score_matrix_graph_context)
+> set_topic_average_score_matrix_graph_context(id, graph_id, topic_average_score_matrix_graph_context)
 
 Put the context of the Average Score Matrix
 
@@ -1962,11 +1962,11 @@ with explorer_client.ApiClient(configuration) as api_client:
     api_instance = explorer_client.DashboardsApi(api_client)
     id = 56 # int | The project identifier
 graph_id = 'graph_id_example' # str | The graph identifier
-topic_average_score_matrix_graph_context = explorer_client.TopicAverageScoreMatrixGraphContext() # TopicAverageScoreMatrixGraphContext | The request body (optional)
+topic_average_score_matrix_graph_context = explorer_client.TopicAverageScoreMatrixGraphContext() # TopicAverageScoreMatrixGraphContext | The request body
 
     try:
         # Put the context of the Average Score Matrix
-        api_instance.set_topic_average_score_matrix_graph_context(id, graph_id, topic_average_score_matrix_graph_context=topic_average_score_matrix_graph_context)
+        api_instance.set_topic_average_score_matrix_graph_context(id, graph_id, topic_average_score_matrix_graph_context)
     except ApiException as e:
         print("Exception when calling DashboardsApi->set_topic_average_score_matrix_graph_context: %s\n" % e)
 ```
@@ -1977,7 +1977,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The project identifier | 
  **graph_id** | **str**| The graph identifier | 
- **topic_average_score_matrix_graph_context** | [**TopicAverageScoreMatrixGraphContext**](TopicAverageScoreMatrixGraphContext.md)| The request body | [optional] 
+ **topic_average_score_matrix_graph_context** | [**TopicAverageScoreMatrixGraphContext**](TopicAverageScoreMatrixGraphContext.md)| The request body | 
 
 ### Return type
 
@@ -2000,7 +2000,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **set_topic_information_graph_context**
-> set_topic_information_graph_context(id, graph_id, topic_information_graph_context=topic_information_graph_context)
+> set_topic_information_graph_context(id, graph_id, topic_information_graph_context)
 
 Put the context of the Topic Information graph data
 
@@ -2038,11 +2038,11 @@ with explorer_client.ApiClient(configuration) as api_client:
     api_instance = explorer_client.DashboardsApi(api_client)
     id = 56 # int | The project identifier
 graph_id = 'graph_id_example' # str | The graph identifier
-topic_information_graph_context = explorer_client.TopicInformationGraphContext() # TopicInformationGraphContext | The request body (optional)
+topic_information_graph_context = explorer_client.TopicInformationGraphContext() # TopicInformationGraphContext | The request body
 
     try:
         # Put the context of the Topic Information graph data
-        api_instance.set_topic_information_graph_context(id, graph_id, topic_information_graph_context=topic_information_graph_context)
+        api_instance.set_topic_information_graph_context(id, graph_id, topic_information_graph_context)
     except ApiException as e:
         print("Exception when calling DashboardsApi->set_topic_information_graph_context: %s\n" % e)
 ```
@@ -2053,7 +2053,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The project identifier | 
  **graph_id** | **str**| The graph identifier | 
- **topic_information_graph_context** | [**TopicInformationGraphContext**](TopicInformationGraphContext.md)| The request body | [optional] 
+ **topic_information_graph_context** | [**TopicInformationGraphContext**](TopicInformationGraphContext.md)| The request body | 
 
 ### Return type
 
@@ -2076,7 +2076,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **set_topic_text_examples_context**
-> set_topic_text_examples_context(id, graph_id, topic_text_examples_graph_context=topic_text_examples_graph_context)
+> set_topic_text_examples_context(id, graph_id, topic_text_examples_graph_context)
 
 Put the context of the Topic Text examples graph data
 
@@ -2114,11 +2114,11 @@ with explorer_client.ApiClient(configuration) as api_client:
     api_instance = explorer_client.DashboardsApi(api_client)
     id = 56 # int | The project identifier
 graph_id = 'graph_id_example' # str | The graph identifier
-topic_text_examples_graph_context = explorer_client.TopicTextExamplesGraphContext() # TopicTextExamplesGraphContext | The request body (optional)
+topic_text_examples_graph_context = explorer_client.TopicTextExamplesGraphContext() # TopicTextExamplesGraphContext | The request body
 
     try:
         # Put the context of the Topic Text examples graph data
-        api_instance.set_topic_text_examples_context(id, graph_id, topic_text_examples_graph_context=topic_text_examples_graph_context)
+        api_instance.set_topic_text_examples_context(id, graph_id, topic_text_examples_graph_context)
     except ApiException as e:
         print("Exception when calling DashboardsApi->set_topic_text_examples_context: %s\n" % e)
 ```
@@ -2129,7 +2129,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The project identifier | 
  **graph_id** | **str**| The graph identifier | 
- **topic_text_examples_graph_context** | [**TopicTextExamplesGraphContext**](TopicTextExamplesGraphContext.md)| The request body | [optional] 
+ **topic_text_examples_graph_context** | [**TopicTextExamplesGraphContext**](TopicTextExamplesGraphContext.md)| The request body | 
 
 ### Return type
 
@@ -2228,7 +2228,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **start_average_score_graph_data**
-> start_average_score_graph_data(id, graph_id, average_score_graph_context=average_score_graph_context)
+> start_average_score_graph_data(id, graph_id, average_score_graph_context)
 
 Start AvgScore Calculation
 
@@ -2266,11 +2266,11 @@ with explorer_client.ApiClient(configuration) as api_client:
     api_instance = explorer_client.DashboardsApi(api_client)
     id = 56 # int | The project identifier
 graph_id = 'graph_id_example' # str | The graph identifier
-average_score_graph_context = explorer_client.AverageScoreGraphContext() # AverageScoreGraphContext | The request body (optional)
+average_score_graph_context = explorer_client.AverageScoreGraphContext() # AverageScoreGraphContext | The request body
 
     try:
         # Start AvgScore Calculation
-        api_instance.start_average_score_graph_data(id, graph_id, average_score_graph_context=average_score_graph_context)
+        api_instance.start_average_score_graph_data(id, graph_id, average_score_graph_context)
     except ApiException as e:
         print("Exception when calling DashboardsApi->start_average_score_graph_data: %s\n" % e)
 ```
@@ -2281,7 +2281,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The project identifier | 
  **graph_id** | **str**| The graph identifier | 
- **average_score_graph_context** | [**AverageScoreGraphContext**](AverageScoreGraphContext.md)| The request body | [optional] 
+ **average_score_graph_context** | [**AverageScoreGraphContext**](AverageScoreGraphContext.md)| The request body | 
 
 ### Return type
 
@@ -2304,7 +2304,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **start_average_score_matrix_graph_data**
-> start_average_score_matrix_graph_data(id, graph_id, average_score_matrix_graph_context=average_score_matrix_graph_context)
+> start_average_score_matrix_graph_data(id, graph_id, average_score_matrix_graph_context)
 
 Start Average Score Matrix Calculation
 
@@ -2342,11 +2342,11 @@ with explorer_client.ApiClient(configuration) as api_client:
     api_instance = explorer_client.DashboardsApi(api_client)
     id = 56 # int | The project identifier
 graph_id = 'graph_id_example' # str | The graph identifier
-average_score_matrix_graph_context = explorer_client.AverageScoreMatrixGraphContext() # AverageScoreMatrixGraphContext | The request body (optional)
+average_score_matrix_graph_context = explorer_client.AverageScoreMatrixGraphContext() # AverageScoreMatrixGraphContext | The request body
 
     try:
         # Start Average Score Matrix Calculation
-        api_instance.start_average_score_matrix_graph_data(id, graph_id, average_score_matrix_graph_context=average_score_matrix_graph_context)
+        api_instance.start_average_score_matrix_graph_data(id, graph_id, average_score_matrix_graph_context)
     except ApiException as e:
         print("Exception when calling DashboardsApi->start_average_score_matrix_graph_data: %s\n" % e)
 ```
@@ -2357,7 +2357,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The project identifier | 
  **graph_id** | **str**| The graph identifier | 
- **average_score_matrix_graph_context** | [**AverageScoreMatrixGraphContext**](AverageScoreMatrixGraphContext.md)| The request body | [optional] 
+ **average_score_matrix_graph_context** | [**AverageScoreMatrixGraphContext**](AverageScoreMatrixGraphContext.md)| The request body | 
 
 ### Return type
 
@@ -2452,7 +2452,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **start_grouped_comparison_graph_data**
-> start_grouped_comparison_graph_data(id, graph_id, grouped_comparison_graph_context=grouped_comparison_graph_context)
+> start_grouped_comparison_graph_data(id, graph_id, grouped_comparison_graph_context)
 
 Start Grouped Comparison Calculation
 
@@ -2490,11 +2490,11 @@ with explorer_client.ApiClient(configuration) as api_client:
     api_instance = explorer_client.DashboardsApi(api_client)
     id = 56 # int | The project identifier
 graph_id = 'graph_id_example' # str | The graph identifier
-grouped_comparison_graph_context = explorer_client.GroupedComparisonGraphContext() # GroupedComparisonGraphContext | The request body (optional)
+grouped_comparison_graph_context = explorer_client.GroupedComparisonGraphContext() # GroupedComparisonGraphContext | The request body
 
     try:
         # Start Grouped Comparison Calculation
-        api_instance.start_grouped_comparison_graph_data(id, graph_id, grouped_comparison_graph_context=grouped_comparison_graph_context)
+        api_instance.start_grouped_comparison_graph_data(id, graph_id, grouped_comparison_graph_context)
     except ApiException as e:
         print("Exception when calling DashboardsApi->start_grouped_comparison_graph_data: %s\n" % e)
 ```
@@ -2505,7 +2505,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The project identifier | 
  **graph_id** | **str**| The graph identifier | 
- **grouped_comparison_graph_context** | [**GroupedComparisonGraphContext**](GroupedComparisonGraphContext.md)| The request body | [optional] 
+ **grouped_comparison_graph_context** | [**GroupedComparisonGraphContext**](GroupedComparisonGraphContext.md)| The request body | 
 
 ### Return type
 
@@ -2528,7 +2528,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **start_high_impact_association_graph_container**
-> start_high_impact_association_graph_container(id, graph_id, high_impact_associations_graph_context=high_impact_associations_graph_context)
+> start_high_impact_association_graph_container(id, graph_id, high_impact_associations_graph_context)
 
 Start High Impact Topic Associations Calculation
 
@@ -2566,11 +2566,11 @@ with explorer_client.ApiClient(configuration) as api_client:
     api_instance = explorer_client.DashboardsApi(api_client)
     id = 56 # int | The project identifier
 graph_id = 'graph_id_example' # str | The graph identifier
-high_impact_associations_graph_context = explorer_client.HighImpactAssociationsGraphContext() # HighImpactAssociationsGraphContext | The request body (optional)
+high_impact_associations_graph_context = explorer_client.HighImpactAssociationsGraphContext() # HighImpactAssociationsGraphContext | The request body
 
     try:
         # Start High Impact Topic Associations Calculation
-        api_instance.start_high_impact_association_graph_container(id, graph_id, high_impact_associations_graph_context=high_impact_associations_graph_context)
+        api_instance.start_high_impact_association_graph_container(id, graph_id, high_impact_associations_graph_context)
     except ApiException as e:
         print("Exception when calling DashboardsApi->start_high_impact_association_graph_container: %s\n" % e)
 ```
@@ -2581,7 +2581,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The project identifier | 
  **graph_id** | **str**| The graph identifier | 
- **high_impact_associations_graph_context** | [**HighImpactAssociationsGraphContext**](HighImpactAssociationsGraphContext.md)| The request body | [optional] 
+ **high_impact_associations_graph_context** | [**HighImpactAssociationsGraphContext**](HighImpactAssociationsGraphContext.md)| The request body | 
 
 ### Return type
 
@@ -2604,7 +2604,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **start_high_impact_graph_data**
-> start_high_impact_graph_data(id, graph_id, high_impact_graph_context=high_impact_graph_context)
+> start_high_impact_graph_data(id, graph_id, high_impact_graph_context)
 
 Start High Impact Topic Calculation
 
@@ -2642,11 +2642,11 @@ with explorer_client.ApiClient(configuration) as api_client:
     api_instance = explorer_client.DashboardsApi(api_client)
     id = 56 # int | The project identifier
 graph_id = 'graph_id_example' # str | The graph identifier
-high_impact_graph_context = explorer_client.HighImpactGraphContext() # HighImpactGraphContext | The request body (optional)
+high_impact_graph_context = explorer_client.HighImpactGraphContext() # HighImpactGraphContext | The request body
 
     try:
         # Start High Impact Topic Calculation
-        api_instance.start_high_impact_graph_data(id, graph_id, high_impact_graph_context=high_impact_graph_context)
+        api_instance.start_high_impact_graph_data(id, graph_id, high_impact_graph_context)
     except ApiException as e:
         print("Exception when calling DashboardsApi->start_high_impact_graph_data: %s\n" % e)
 ```
@@ -2657,7 +2657,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The project identifier | 
  **graph_id** | **str**| The graph identifier | 
- **high_impact_graph_context** | [**HighImpactGraphContext**](HighImpactGraphContext.md)| The request body | [optional] 
+ **high_impact_graph_context** | [**HighImpactGraphContext**](HighImpactGraphContext.md)| The request body | 
 
 ### Return type
 
@@ -2756,7 +2756,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **start_timeseries_comparison_graph_data**
-> start_timeseries_comparison_graph_data(id, graph_id, timeseries_comparison_graph_context=timeseries_comparison_graph_context)
+> start_timeseries_comparison_graph_data(id, graph_id, timeseries_comparison_graph_context)
 
 Start Time Series Comparison Calculation
 
@@ -2794,11 +2794,11 @@ with explorer_client.ApiClient(configuration) as api_client:
     api_instance = explorer_client.DashboardsApi(api_client)
     id = 56 # int | The project identifier
 graph_id = 'graph_id_example' # str | The graph identifier
-timeseries_comparison_graph_context = explorer_client.TimeseriesComparisonGraphContext() # TimeseriesComparisonGraphContext | The the request (optional)
+timeseries_comparison_graph_context = explorer_client.TimeseriesComparisonGraphContext() # TimeseriesComparisonGraphContext | The the request
 
     try:
         # Start Time Series Comparison Calculation
-        api_instance.start_timeseries_comparison_graph_data(id, graph_id, timeseries_comparison_graph_context=timeseries_comparison_graph_context)
+        api_instance.start_timeseries_comparison_graph_data(id, graph_id, timeseries_comparison_graph_context)
     except ApiException as e:
         print("Exception when calling DashboardsApi->start_timeseries_comparison_graph_data: %s\n" % e)
 ```
@@ -2809,7 +2809,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The project identifier | 
  **graph_id** | **str**| The graph identifier | 
- **timeseries_comparison_graph_context** | [**TimeseriesComparisonGraphContext**](TimeseriesComparisonGraphContext.md)| The the request | [optional] 
+ **timeseries_comparison_graph_context** | [**TimeseriesComparisonGraphContext**](TimeseriesComparisonGraphContext.md)| The the request | 
 
 ### Return type
 
@@ -3060,7 +3060,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_topic_graph**
-> TopicGraphInfo update_topic_graph(id, graph_id, topic_graph_create_request=topic_graph_create_request)
+> TopicGraphInfo update_topic_graph(id, graph_id, topic_graph_create_request)
 
 Update topic Graphs
 
@@ -3098,11 +3098,11 @@ with explorer_client.ApiClient(configuration) as api_client:
     api_instance = explorer_client.DashboardsApi(api_client)
     id = 56 # int | The project identifier
 graph_id = 'graph_id_example' # str | The graph identifier
-topic_graph_create_request = explorer_client.TopicGraphCreateRequest() # TopicGraphCreateRequest | The topic graph update request (optional)
+topic_graph_create_request = explorer_client.TopicGraphCreateRequest() # TopicGraphCreateRequest | The topic graph update request
 
     try:
         # Update topic Graphs
-        api_response = api_instance.update_topic_graph(id, graph_id, topic_graph_create_request=topic_graph_create_request)
+        api_response = api_instance.update_topic_graph(id, graph_id, topic_graph_create_request)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling DashboardsApi->update_topic_graph: %s\n" % e)
@@ -3114,7 +3114,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The project identifier | 
  **graph_id** | **str**| The graph identifier | 
- **topic_graph_create_request** | [**TopicGraphCreateRequest**](TopicGraphCreateRequest.md)| The topic graph update request | [optional] 
+ **topic_graph_create_request** | [**TopicGraphCreateRequest**](TopicGraphCreateRequest.md)| The topic graph update request | 
 
 ### Return type
 

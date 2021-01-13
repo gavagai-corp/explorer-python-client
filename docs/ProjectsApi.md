@@ -439,7 +439,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_folder**
-> FolderInformation create_folder(folder_request=folder_request)
+> FolderInformation create_folder(folder_request)
 
 Create folder
 
@@ -475,11 +475,11 @@ configuration = explorer_client.Configuration(
 with explorer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = explorer_client.ProjectsApi(api_client)
-    folder_request = explorer_client.FolderRequest() # FolderRequest | The request (optional)
+    folder_request = explorer_client.FolderRequest() # FolderRequest | The request
 
     try:
         # Create folder
-        api_response = api_instance.create_folder(folder_request=folder_request)
+        api_response = api_instance.create_folder(folder_request)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ProjectsApi->create_folder: %s\n" % e)
@@ -489,7 +489,7 @@ with explorer_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **folder_request** | [**FolderRequest**](FolderRequest.md)| The request | [optional] 
+ **folder_request** | [**FolderRequest**](FolderRequest.md)| The request | 
 
 ### Return type
 
@@ -512,7 +512,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_report**
-> ProjectReport create_report(id, type=type, pole_id=pole_id, pole_ids=pole_ids, keywords=keywords, topic_ids=topic_ids, sort_alphabetically=sort_alphabetically)
+> ProjectReport create_report(id, type, pole_id=pole_id, pole_ids=pole_ids, keywords=keywords, topic_ids=topic_ids, sort_alphabetically=sort_alphabetically)
 
 Create report
 
@@ -549,7 +549,7 @@ with explorer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = explorer_client.ProjectsApi(api_client)
     id = 56 # int | The identifier for the project
-type = 'PDF' # str | The type of report to generate, for example 'EXCEL' or 'PDF'. (optional) (default to 'PDF')
+type = 'PDF' # str | The type of report to generate, for example 'EXCEL' or 'PDF'. (default to 'PDF')
 pole_id = 0 # int | The id of the pole or concept to filter texts by (if desired). Corresponds to target concept in the GUI. (optional) (default to 0)
 pole_ids = [56] # list[int] | The ids of the poles (soon concepts) to analyse for strength in the texts. (optional)
 keywords = True # bool | Boolean to control if keywords columns will be created. (optional) (default to True)
@@ -558,7 +558,7 @@ sort_alphabetically = False # bool | Turn on alphabetically sorted topics. (opti
 
     try:
         # Create report
-        api_response = api_instance.create_report(id, type=type, pole_id=pole_id, pole_ids=pole_ids, keywords=keywords, topic_ids=topic_ids, sort_alphabetically=sort_alphabetically)
+        api_response = api_instance.create_report(id, type, pole_id=pole_id, pole_ids=pole_ids, keywords=keywords, topic_ids=topic_ids, sort_alphabetically=sort_alphabetically)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ProjectsApi->create_report: %s\n" % e)
@@ -569,7 +569,7 @@ sort_alphabetically = False # bool | Turn on alphabetically sorted topics. (opti
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The identifier for the project | 
- **type** | **str**| The type of report to generate, for example &#39;EXCEL&#39; or &#39;PDF&#39;. | [optional] [default to &#39;PDF&#39;]
+ **type** | **str**| The type of report to generate, for example &#39;EXCEL&#39; or &#39;PDF&#39;. | [default to &#39;PDF&#39;]
  **pole_id** | **int**| The id of the pole or concept to filter texts by (if desired). Corresponds to target concept in the GUI. | [optional] [default to 0]
  **pole_ids** | [**list[int]**](int.md)| The ids of the poles (soon concepts) to analyse for strength in the texts. | [optional] 
  **keywords** | **bool**| Boolean to control if keywords columns will be created. | [optional] [default to True]
@@ -597,7 +597,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_stories**
-> create_stories(id, stories_request=stories_request)
+> create_stories(id, stories_request)
 
 Create Stories
 
@@ -634,11 +634,11 @@ with explorer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = explorer_client.ProjectsApi(api_client)
     id = 56 # int | The id of the project
-stories_request = explorer_client.StoriesRequest() # StoriesRequest | The request containing the required data for the stories generation (optional)
+stories_request = explorer_client.StoriesRequest() # StoriesRequest | The request containing the required data for the stories generation
 
     try:
         # Create Stories
-        api_instance.create_stories(id, stories_request=stories_request)
+        api_instance.create_stories(id, stories_request)
     except ApiException as e:
         print("Exception when calling ProjectsApi->create_stories: %s\n" % e)
 ```
@@ -648,7 +648,7 @@ stories_request = explorer_client.StoriesRequest() # StoriesRequest | The reques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The id of the project | 
- **stories_request** | [**StoriesRequest**](StoriesRequest.md)| The request containing the required data for the stories generation | [optional] 
+ **stories_request** | [**StoriesRequest**](StoriesRequest.md)| The request containing the required data for the stories generation | 
 
 ### Return type
 
@@ -671,7 +671,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **explore_project**
-> explore_project(id, project_exploration_context=project_exploration_context)
+> explore_project(id, project_exploration_context)
 
 Explore project
 
@@ -708,11 +708,11 @@ with explorer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = explorer_client.ProjectsApi(api_client)
     id = 56 # int | The id of the project to explore
-project_exploration_context = explorer_client.ProjectExplorationContext() # ProjectExplorationContext | The exploration context to use (optional)
+project_exploration_context = explorer_client.ProjectExplorationContext() # ProjectExplorationContext | The exploration context to use
 
     try:
         # Explore project
-        api_instance.explore_project(id, project_exploration_context=project_exploration_context)
+        api_instance.explore_project(id, project_exploration_context)
     except ApiException as e:
         print("Exception when calling ProjectsApi->explore_project: %s\n" % e)
 ```
@@ -722,7 +722,7 @@ project_exploration_context = explorer_client.ProjectExplorationContext() # Proj
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The id of the project to explore | 
- **project_exploration_context** | [**ProjectExplorationContext**](ProjectExplorationContext.md)| The exploration context to use | [optional] 
+ **project_exploration_context** | [**ProjectExplorationContext**](ProjectExplorationContext.md)| The exploration context to use | 
 
 ### Return type
 
@@ -745,7 +745,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **find_suggestions**
-> SuggestionsResult find_suggestions(id, suggestions_request=suggestions_request)
+> SuggestionsResult find_suggestions(id, suggestions_request)
 
 Get suggestions for terms
 
@@ -782,11 +782,11 @@ with explorer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = explorer_client.ProjectsApi(api_client)
     id = 56 # int | The identifier of the project
-suggestions_request = explorer_client.SuggestionsRequest() # SuggestionsRequest | The request containing relevant terms (optional)
+suggestions_request = explorer_client.SuggestionsRequest() # SuggestionsRequest | The request containing relevant terms
 
     try:
         # Get suggestions for terms
-        api_response = api_instance.find_suggestions(id, suggestions_request=suggestions_request)
+        api_response = api_instance.find_suggestions(id, suggestions_request)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ProjectsApi->find_suggestions: %s\n" % e)
@@ -797,7 +797,7 @@ suggestions_request = explorer_client.SuggestionsRequest() # SuggestionsRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The identifier of the project | 
- **suggestions_request** | [**SuggestionsRequest**](SuggestionsRequest.md)| The request containing relevant terms | [optional] 
+ **suggestions_request** | [**SuggestionsRequest**](SuggestionsRequest.md)| The request containing relevant terms | 
 
 ### Return type
 
@@ -1430,7 +1430,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_matching_sentences_for_terms**
-> Sentences get_matching_sentences_for_terms(id, terms=terms, max_sentences=max_sentences)
+> Sentences get_matching_sentences_for_terms(id, terms, max_sentences=max_sentences)
 
 Get sentences
 
@@ -1467,12 +1467,12 @@ with explorer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = explorer_client.ProjectsApi(api_client)
     id = 56 # int | The id of the project
-terms = ['terms_example'] # list[str] | The terms for which sentences must be retrieved (optional)
+terms = ['terms_example'] # list[str] | The terms for which sentences must be retrieved
 max_sentences = 10 # int | The maximum number of sentences to include (maximum 20). The actual number will be equal or less to the number specified (optional) (default to 10)
 
     try:
         # Get sentences
-        api_response = api_instance.get_matching_sentences_for_terms(id, terms=terms, max_sentences=max_sentences)
+        api_response = api_instance.get_matching_sentences_for_terms(id, terms, max_sentences=max_sentences)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ProjectsApi->get_matching_sentences_for_terms: %s\n" % e)
@@ -1483,7 +1483,7 @@ max_sentences = 10 # int | The maximum number of sentences to include (maximum 2
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The id of the project | 
- **terms** | [**list[str]**](str.md)| The terms for which sentences must be retrieved | [optional] 
+ **terms** | [**list[str]**](str.md)| The terms for which sentences must be retrieved | 
  **max_sentences** | **int**| The maximum number of sentences to include (maximum 20). The actual number will be equal or less to the number specified | [optional] [default to 10]
 
 ### Return type
@@ -2850,7 +2850,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_for_project_terms**
-> list[str] search_for_project_terms(id, lookfor=lookfor)
+> list[str] search_for_project_terms(id, lookfor)
 
 Search Project Terms
 
@@ -2887,11 +2887,11 @@ with explorer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = explorer_client.ProjectsApi(api_client)
     id = 56 # int | The id of the project
-lookfor = 'lookfor_example' # str | String to search for. Needs to be 2 characters or more (optional)
+lookfor = 'lookfor_example' # str | String to search for. Needs to be 2 characters or more
 
     try:
         # Search Project Terms
-        api_response = api_instance.search_for_project_terms(id, lookfor=lookfor)
+        api_response = api_instance.search_for_project_terms(id, lookfor)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ProjectsApi->search_for_project_terms: %s\n" % e)
@@ -2902,7 +2902,7 @@ lookfor = 'lookfor_example' # str | String to search for. Needs to be 2 characte
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The id of the project | 
- **lookfor** | **str**| String to search for. Needs to be 2 characters or more | [optional] 
+ **lookfor** | **str**| String to search for. Needs to be 2 characters or more | 
 
 ### Return type
 
@@ -3001,7 +3001,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **start_group_tonalities**
-> start_group_tonalities(id, group_id, terms=terms, associations=associations, sort_by_tonality=sort_by_tonality, order_by=order_by, tonalities_request_context=tonalities_request_context)
+> start_group_tonalities(id, group_id, tonalities_request_context, terms=terms, associations=associations, sort_by_tonality=sort_by_tonality, order_by=order_by)
 
 Start tonality calculation
 
@@ -3039,15 +3039,15 @@ with explorer_client.ApiClient(configuration) as api_client:
     api_instance = explorer_client.ProjectsApi(api_client)
     id = 56 # int | The project identifier.
 group_id = 56 # int | The group identifier.
+tonalities_request_context = explorer_client.TonalitiesRequestContext() # TonalitiesRequestContext | The context of the tonalities request, specifically with regards to terms to include. If the context element provided in the request, the corresponding query parameters are ignored.
 terms = ['terms_example'] # list[str] | DEPRECATED - please use the request body object to specify terms instead. Specify the terms you are interested in getting details for. If left empty all group terms will be taken into account. One query parameter per term like this: ?terms=a_term&amp;terms=some_other_term&amp;... (optional)
 associations = ['associations_example'] # list[str] | DEPRECATED - please use the request body object to specify associations instead. Optionally specify the associations you are interested in as well. Same format as for the terms: ?associations=association1&amp;associations=assoc2 (optional)
 sort_by_tonality = 'sort_by_tonality_example' # str | Which tonality you want to sort by. (optional)
 order_by = 'SENTIMENT_DESC' # str | The order of the examples to return. Defaults to SENTIMENT_DESC. (optional) (default to 'SENTIMENT_DESC')
-tonalities_request_context = explorer_client.TonalitiesRequestContext() # TonalitiesRequestContext | The context of the tonalities request, specifically with regards to terms toinclude. If the context element provided in the request, the corresponding query parameters are ignored. (optional)
 
     try:
         # Start tonality calculation
-        api_instance.start_group_tonalities(id, group_id, terms=terms, associations=associations, sort_by_tonality=sort_by_tonality, order_by=order_by, tonalities_request_context=tonalities_request_context)
+        api_instance.start_group_tonalities(id, group_id, tonalities_request_context, terms=terms, associations=associations, sort_by_tonality=sort_by_tonality, order_by=order_by)
     except ApiException as e:
         print("Exception when calling ProjectsApi->start_group_tonalities: %s\n" % e)
 ```
@@ -3058,11 +3058,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The project identifier. | 
  **group_id** | **int**| The group identifier. | 
+ **tonalities_request_context** | [**TonalitiesRequestContext**](TonalitiesRequestContext.md)| The context of the tonalities request, specifically with regards to terms to include. If the context element provided in the request, the corresponding query parameters are ignored. | 
  **terms** | [**list[str]**](str.md)| DEPRECATED - please use the request body object to specify terms instead. Specify the terms you are interested in getting details for. If left empty all group terms will be taken into account. One query parameter per term like this: ?terms&#x3D;a_term&amp;amp;terms&#x3D;some_other_term&amp;amp;... | [optional] 
  **associations** | [**list[str]**](str.md)| DEPRECATED - please use the request body object to specify associations instead. Optionally specify the associations you are interested in as well. Same format as for the terms: ?associations&#x3D;association1&amp;amp;associations&#x3D;assoc2 | [optional] 
  **sort_by_tonality** | **str**| Which tonality you want to sort by. | [optional] 
  **order_by** | **str**| The order of the examples to return. Defaults to SENTIMENT_DESC. | [optional] [default to &#39;SENTIMENT_DESC&#39;]
- **tonalities_request_context** | [**TonalitiesRequestContext**](TonalitiesRequestContext.md)| The context of the tonalities request, specifically with regards to terms toinclude. If the context element provided in the request, the corresponding query parameters are ignored. | [optional] 
 
 ### Return type
 
@@ -3161,7 +3161,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **start_topic_tonalities**
-> start_topic_tonalities(id, group_id, topic_id, terms=terms, associations=associations, sort_by_tonality=sort_by_tonality, order_by=order_by, tonalities_request_context=tonalities_request_context)
+> start_topic_tonalities(id, group_id, topic_id, tonalities_request_context, terms=terms, associations=associations, sort_by_tonality=sort_by_tonality, order_by=order_by)
 
 Start tonality calculation
 
@@ -3200,15 +3200,15 @@ with explorer_client.ApiClient(configuration) as api_client:
     id = 56 # int | The project identifier.
 group_id = 56 # int | The group identifier.
 topic_id = 56 # int | The topic identifier. The topic must belong to the group identified by the groupId parameter
+tonalities_request_context = explorer_client.TonalitiesRequestContext() # TonalitiesRequestContext | The context of the tonalities request, specifically with regards to terms to include. If the context element provided in the request, the corresponding query parameters are ignored.
 terms = ['terms_example'] # list[str] | DEPRECATED - please use the request body object to specify terms instead. Specify the terms you are interested in getting details for. If left empty all group terms will be taken into account One query paramter per term like this:?terms=a_term&amp;terms=some_other_term&amp;... (optional)
 associations = ['associations_example'] # list[str] | DEPRECATED - please use the request body object to specify associations instead. Optionally specify the associations you are interested in as well. Same format as for the terms: ?associations=association1&amp;associations=assoc2 (optional)
 sort_by_tonality = 'sort_by_tonality_example' # str | Which tonality you want to sort by. (optional)
 order_by = 'SENTIMENT_DESC' # str | The order of the examples to return. Defaults to SENTIMENT_DESC. (optional) (default to 'SENTIMENT_DESC')
-tonalities_request_context = explorer_client.TonalitiesRequestContext() # TonalitiesRequestContext | The context of the tonalities request, specifically with regards to terms to include. If the context element provided in the request, the corresponding query parameters are ignored. (optional)
 
     try:
         # Start tonality calculation
-        api_instance.start_topic_tonalities(id, group_id, topic_id, terms=terms, associations=associations, sort_by_tonality=sort_by_tonality, order_by=order_by, tonalities_request_context=tonalities_request_context)
+        api_instance.start_topic_tonalities(id, group_id, topic_id, tonalities_request_context, terms=terms, associations=associations, sort_by_tonality=sort_by_tonality, order_by=order_by)
     except ApiException as e:
         print("Exception when calling ProjectsApi->start_topic_tonalities: %s\n" % e)
 ```
@@ -3220,11 +3220,11 @@ Name | Type | Description  | Notes
  **id** | **int**| The project identifier. | 
  **group_id** | **int**| The group identifier. | 
  **topic_id** | **int**| The topic identifier. The topic must belong to the group identified by the groupId parameter | 
+ **tonalities_request_context** | [**TonalitiesRequestContext**](TonalitiesRequestContext.md)| The context of the tonalities request, specifically with regards to terms to include. If the context element provided in the request, the corresponding query parameters are ignored. | 
  **terms** | [**list[str]**](str.md)| DEPRECATED - please use the request body object to specify terms instead. Specify the terms you are interested in getting details for. If left empty all group terms will be taken into account One query paramter per term like this:?terms&#x3D;a_term&amp;amp;terms&#x3D;some_other_term&amp;amp;... | [optional] 
  **associations** | [**list[str]**](str.md)| DEPRECATED - please use the request body object to specify associations instead. Optionally specify the associations you are interested in as well. Same format as for the terms: ?associations&#x3D;association1&amp;amp;associations&#x3D;assoc2 | [optional] 
  **sort_by_tonality** | **str**| Which tonality you want to sort by. | [optional] 
  **order_by** | **str**| The order of the examples to return. Defaults to SENTIMENT_DESC. | [optional] [default to &#39;SENTIMENT_DESC&#39;]
- **tonalities_request_context** | [**TonalitiesRequestContext**](TonalitiesRequestContext.md)| The context of the tonalities request, specifically with regards to terms to include. If the context element provided in the request, the corresponding query parameters are ignored. | [optional] 
 
 ### Return type
 
@@ -3247,7 +3247,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_folder**
-> FolderInformation update_folder(folder_id, folder_request=folder_request)
+> FolderInformation update_folder(folder_id, folder_request)
 
 Update folder
 
@@ -3284,11 +3284,11 @@ with explorer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = explorer_client.ProjectsApi(api_client)
     folder_id = 56 # int | The id of the folder
-folder_request = explorer_client.FolderRequest() # FolderRequest |  (optional)
+folder_request = explorer_client.FolderRequest() # FolderRequest | The folder update request
 
     try:
         # Update folder
-        api_response = api_instance.update_folder(folder_id, folder_request=folder_request)
+        api_response = api_instance.update_folder(folder_id, folder_request)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ProjectsApi->update_folder: %s\n" % e)
@@ -3299,7 +3299,7 @@ folder_request = explorer_client.FolderRequest() # FolderRequest |  (optional)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **folder_id** | **int**| The id of the folder | 
- **folder_request** | [**FolderRequest**](FolderRequest.md)|  | [optional] 
+ **folder_request** | [**FolderRequest**](FolderRequest.md)| The folder update request | 
 
 ### Return type
 
@@ -3322,7 +3322,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_project**
-> Project update_project(id, project_request=project_request)
+> Project update_project(id, project_request)
 
 Update project
 
@@ -3359,11 +3359,11 @@ with explorer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = explorer_client.ProjectsApi(api_client)
     id = 56 # int | The identifier of the project
-project_request = explorer_client.ProjectRequest() # ProjectRequest | The information with which to update the project (optional)
+project_request = explorer_client.ProjectRequest() # ProjectRequest | The information with which to update the project
 
     try:
         # Update project
-        api_response = api_instance.update_project(id, project_request=project_request)
+        api_response = api_instance.update_project(id, project_request)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ProjectsApi->update_project: %s\n" % e)
@@ -3374,7 +3374,7 @@ project_request = explorer_client.ProjectRequest() # ProjectRequest | The inform
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The identifier of the project | 
- **project_request** | [**ProjectRequest**](ProjectRequest.md)| The information with which to update the project | [optional] 
+ **project_request** | [**ProjectRequest**](ProjectRequest.md)| The information with which to update the project | 
 
 ### Return type
 
@@ -3397,7 +3397,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_project_model**
-> Model update_project_model(id, model_input=model_input)
+> Model update_project_model(id, model_input)
 
 Update Project Model
 
@@ -3434,11 +3434,11 @@ with explorer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = explorer_client.ProjectsApi(api_client)
     id = 56 # int | The id of the project
-model_input = explorer_client.ModelInput() # ModelInput | The information with which to update the project. (optional)
+model_input = explorer_client.ModelInput() # ModelInput | The information with which to update the project.
 
     try:
         # Update Project Model
-        api_response = api_instance.update_project_model(id, model_input=model_input)
+        api_response = api_instance.update_project_model(id, model_input)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ProjectsApi->update_project_model: %s\n" % e)
@@ -3449,7 +3449,7 @@ model_input = explorer_client.ModelInput() # ModelInput | The information with w
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The id of the project | 
- **model_input** | [**ModelInput**](ModelInput.md)| The information with which to update the project. | [optional] 
+ **model_input** | [**ModelInput**](ModelInput.md)| The information with which to update the project. | 
 
 ### Return type
 
@@ -3636,7 +3636,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **validate_filter_date_format**
-> FilterValidation validate_filter_date_format(project_id, column_header_id, value_format=value_format)
+> FilterValidation validate_filter_date_format(project_id, column_header_id, value_format)
 
 Validate your data filter format
 
@@ -3674,11 +3674,11 @@ with explorer_client.ApiClient(configuration) as api_client:
     api_instance = explorer_client.ProjectsApi(api_client)
     project_id = 56 # int | The id of the project
 column_header_id = 56 # int | The id of the column with date information to be validated
-value_format = 'value_format_example' # str | The valueFormat Example: To map column data in the format '2018-06-18 11:33:23' you need a valueFormat like '%Y-%m-%d %T' (optional)
+value_format = 'value_format_example' # str | The valueFormat Example: To map column data in the format '2018-06-18 11:33:23' you need a valueFormat like '%Y-%m-%d %T'
 
     try:
         # Validate your data filter format
-        api_response = api_instance.validate_filter_date_format(project_id, column_header_id, value_format=value_format)
+        api_response = api_instance.validate_filter_date_format(project_id, column_header_id, value_format)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ProjectsApi->validate_filter_date_format: %s\n" % e)
@@ -3690,7 +3690,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_id** | **int**| The id of the project | 
  **column_header_id** | **int**| The id of the column with date information to be validated | 
- **value_format** | **str**| The valueFormat Example: To map column data in the format &#39;2018-06-18 11:33:23&#39; you need a valueFormat like &#39;%Y-%m-%d %T&#39; | [optional] 
+ **value_format** | **str**| The valueFormat Example: To map column data in the format &#39;2018-06-18 11:33:23&#39; you need a valueFormat like &#39;%Y-%m-%d %T&#39; | 
 
 ### Return type
 

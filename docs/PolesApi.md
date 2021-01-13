@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **create_pole**
-> Pole create_pole(pole_request=pole_request)
+> Pole create_pole(pole_request)
 
 Create Pole
 
@@ -49,11 +49,11 @@ configuration = explorer_client.Configuration(
 with explorer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = explorer_client.PolesApi(api_client)
-    pole_request = explorer_client.PoleRequest() # PoleRequest | The pole to be created (optional)
+    pole_request = explorer_client.PoleRequest() # PoleRequest | The pole to be created
 
     try:
         # Create Pole
-        api_response = api_instance.create_pole(pole_request=pole_request)
+        api_response = api_instance.create_pole(pole_request)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling PolesApi->create_pole: %s\n" % e)
@@ -63,7 +63,7 @@ with explorer_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pole_request** | [**PoleRequest**](PoleRequest.md)| The pole to be created | [optional] 
+ **pole_request** | [**PoleRequest**](PoleRequest.md)| The pole to be created | 
 
 ### Return type
 
@@ -374,7 +374,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_pole**
-> Pole update_pole(id, clear_contents=clear_contents, pole_request=pole_request)
+> Pole update_pole(id, pole_request, clear_contents=clear_contents)
 
 Update Pole
 
@@ -411,12 +411,12 @@ with explorer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = explorer_client.PolesApi(api_client)
     id = 56 # int | The id of the pole to be updated
+pole_request = explorer_client.PoleRequest() # PoleRequest | The pole to be updated
 clear_contents = True # bool | If this flag is set, the pole parts are cleared and are populated with the pole parts in the json payload. If it is not set, the pole parts in the payload are appended to the existing pole parts (optional) (default to True)
-pole_request = explorer_client.PoleRequest() # PoleRequest | The pole to be updated (optional)
 
     try:
         # Update Pole
-        api_response = api_instance.update_pole(id, clear_contents=clear_contents, pole_request=pole_request)
+        api_response = api_instance.update_pole(id, pole_request, clear_contents=clear_contents)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling PolesApi->update_pole: %s\n" % e)
@@ -427,8 +427,8 @@ pole_request = explorer_client.PoleRequest() # PoleRequest | The pole to be upda
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The id of the pole to be updated | 
+ **pole_request** | [**PoleRequest**](PoleRequest.md)| The pole to be updated | 
  **clear_contents** | **bool**| If this flag is set, the pole parts are cleared and are populated with the pole parts in the json payload. If it is not set, the pole parts in the payload are appended to the existing pole parts | [optional] [default to True]
- **pole_request** | [**PoleRequest**](PoleRequest.md)| The pole to be updated | [optional] 
 
 ### Return type
 

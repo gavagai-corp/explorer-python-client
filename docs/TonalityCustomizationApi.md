@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **create_tonality_customization**
-> TonalityCustomization create_tonality_customization(tonality_customization=tonality_customization)
+> TonalityCustomization create_tonality_customization(tonality_customization_request)
 
 Create Tonality Customization
 
@@ -49,11 +49,11 @@ configuration = explorer_client.Configuration(
 with explorer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = explorer_client.TonalityCustomizationApi(api_client)
-    tonality_customization = explorer_client.TonalityCustomization() # TonalityCustomization | TonalityCustomization the tonality customization to create (optional)
+    tonality_customization_request = explorer_client.TonalityCustomizationRequest() # TonalityCustomizationRequest | TonalityCustomization the tonality customization to create
 
     try:
         # Create Tonality Customization
-        api_response = api_instance.create_tonality_customization(tonality_customization=tonality_customization)
+        api_response = api_instance.create_tonality_customization(tonality_customization_request)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling TonalityCustomizationApi->create_tonality_customization: %s\n" % e)
@@ -63,7 +63,7 @@ with explorer_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tonality_customization** | [**TonalityCustomization**](TonalityCustomization.md)| TonalityCustomization the tonality customization to create | [optional] 
+ **tonality_customization_request** | [**TonalityCustomizationRequest**](TonalityCustomizationRequest.md)| TonalityCustomization the tonality customization to create | 
 
 ### Return type
 
@@ -300,7 +300,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_tonality_details_for_terms**
-> TermsTonalityDetails get_tonality_details_for_terms(language, terms=terms)
+> TermsTonalityDetails get_tonality_details_for_terms(terms, language)
 
 Get Term Tonalitites
 
@@ -336,12 +336,12 @@ configuration = explorer_client.Configuration(
 with explorer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = explorer_client.TonalityCustomizationApi(api_client)
-    language = 'language_example' # str | The language
-terms = ['terms_example'] # list[str] | The terms for which the details are required (optional)
+    terms = ['terms_example'] # list[str] | The terms for which the details are required
+language = 'language_example' # str | The language
 
     try:
         # Get Term Tonalitites
-        api_response = api_instance.get_tonality_details_for_terms(language, terms=terms)
+        api_response = api_instance.get_tonality_details_for_terms(terms, language)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling TonalityCustomizationApi->get_tonality_details_for_terms: %s\n" % e)
@@ -351,8 +351,8 @@ terms = ['terms_example'] # list[str] | The terms for which the details are requ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **terms** | [**list[str]**](str.md)| The terms for which the details are required | 
  **language** | **str**| The language | 
- **terms** | [**list[str]**](str.md)| The terms for which the details are required | [optional] 
 
 ### Return type
 
@@ -375,7 +375,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_tonality_customization**
-> TonalityCustomization update_tonality_customization(id, tonality_customization=tonality_customization)
+> TonalityCustomization update_tonality_customization(id, tonality_customization_request)
 
 Update Tonality Customization
 
@@ -412,11 +412,11 @@ with explorer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = explorer_client.TonalityCustomizationApi(api_client)
     id = 56 # int | The id of the customization to update
-tonality_customization = explorer_client.TonalityCustomization() # TonalityCustomization | The updated tonality customization (optional)
+tonality_customization_request = explorer_client.TonalityCustomizationRequest() # TonalityCustomizationRequest | The updated tonality customization
 
     try:
         # Update Tonality Customization
-        api_response = api_instance.update_tonality_customization(id, tonality_customization=tonality_customization)
+        api_response = api_instance.update_tonality_customization(id, tonality_customization_request)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling TonalityCustomizationApi->update_tonality_customization: %s\n" % e)
@@ -427,7 +427,7 @@ tonality_customization = explorer_client.TonalityCustomization() # TonalityCusto
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The id of the customization to update | 
- **tonality_customization** | [**TonalityCustomization**](TonalityCustomization.md)| The updated tonality customization | [optional] 
+ **tonality_customization_request** | [**TonalityCustomizationRequest**](TonalityCustomizationRequest.md)| The updated tonality customization | 
 
 ### Return type
 

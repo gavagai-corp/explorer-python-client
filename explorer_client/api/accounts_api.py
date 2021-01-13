@@ -2090,17 +2090,17 @@ class AccountsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def purchase_credits(self, **kwargs):  # noqa: E501
+    def purchase_credits(self, credit_purchase, **kwargs):  # noqa: E501
         """Purchase Credits  # noqa: E501
 
         Purchase Explorer credits for the logged in user. If the issuing bank for the user requires verification for the transaction, the response will include a link for the verification. Following successful verification, the transaction will be reprocessed automatically.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.purchase_credits(async_req=True)
+        >>> thread = api.purchase_credits(credit_purchase, async_req=True)
         >>> result = thread.get()
 
-        :param credit_purchase: The purchase request for credits, specifying the number of credits to purchase
+        :param credit_purchase: The purchase request for credits, specifying the number of credits to purchase (required)
         :type credit_purchase: CreditPurchase
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -2118,19 +2118,19 @@ class AccountsApi(object):
         :rtype: CreditPurchaseResponse
         """
         kwargs['_return_http_data_only'] = True
-        return self.purchase_credits_with_http_info(**kwargs)  # noqa: E501
+        return self.purchase_credits_with_http_info(credit_purchase, **kwargs)  # noqa: E501
 
-    def purchase_credits_with_http_info(self, **kwargs):  # noqa: E501
+    def purchase_credits_with_http_info(self, credit_purchase, **kwargs):  # noqa: E501
         """Purchase Credits  # noqa: E501
 
         Purchase Explorer credits for the logged in user. If the issuing bank for the user requires verification for the transaction, the response will include a link for the verification. Following successful verification, the transaction will be reprocessed automatically.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.purchase_credits_with_http_info(async_req=True)
+        >>> thread = api.purchase_credits_with_http_info(credit_purchase, async_req=True)
         >>> result = thread.get()
 
-        :param credit_purchase: The purchase request for credits, specifying the number of credits to purchase
+        :param credit_purchase: The purchase request for credits, specifying the number of credits to purchase (required)
         :type credit_purchase: CreditPurchase
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -2178,6 +2178,10 @@ class AccountsApi(object):
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
+        # verify the required parameter 'credit_purchase' is set
+        if self.api_client.client_side_validation and ('credit_purchase' not in local_var_params or  # noqa: E501
+                                                        local_var_params['credit_purchase'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `credit_purchase` when calling `purchase_credits`")  # noqa: E501
 
         collection_formats = {}
 
@@ -2225,17 +2229,17 @@ class AccountsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def reactivate_account(self, **kwargs):  # noqa: E501
+    def reactivate_account(self, account_reactivation_request, **kwargs):  # noqa: E501
         """Reactivate Account  # noqa: E501
 
         Reactive the logged in user's account after setting the product plan specified  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.reactivate_account(async_req=True)
+        >>> thread = api.reactivate_account(account_reactivation_request, async_req=True)
         >>> result = thread.get()
 
-        :param account_reactivation_request: The reactivation request specifying which product plan the user would like to select
+        :param account_reactivation_request: The reactivation request specifying which product plan the user would like to select (required)
         :type account_reactivation_request: AccountReactivationRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -2253,19 +2257,19 @@ class AccountsApi(object):
         :rtype: AccountReactivationResponse
         """
         kwargs['_return_http_data_only'] = True
-        return self.reactivate_account_with_http_info(**kwargs)  # noqa: E501
+        return self.reactivate_account_with_http_info(account_reactivation_request, **kwargs)  # noqa: E501
 
-    def reactivate_account_with_http_info(self, **kwargs):  # noqa: E501
+    def reactivate_account_with_http_info(self, account_reactivation_request, **kwargs):  # noqa: E501
         """Reactivate Account  # noqa: E501
 
         Reactive the logged in user's account after setting the product plan specified  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.reactivate_account_with_http_info(async_req=True)
+        >>> thread = api.reactivate_account_with_http_info(account_reactivation_request, async_req=True)
         >>> result = thread.get()
 
-        :param account_reactivation_request: The reactivation request specifying which product plan the user would like to select
+        :param account_reactivation_request: The reactivation request specifying which product plan the user would like to select (required)
         :type account_reactivation_request: AccountReactivationRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -2313,6 +2317,10 @@ class AccountsApi(object):
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
+        # verify the required parameter 'account_reactivation_request' is set
+        if self.api_client.client_side_validation and ('account_reactivation_request' not in local_var_params or  # noqa: E501
+                                                        local_var_params['account_reactivation_request'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `account_reactivation_request` when calling `reactivate_account`")  # noqa: E501
 
         collection_formats = {}
 
@@ -2493,17 +2501,17 @@ class AccountsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def set_product_plan(self, **kwargs):  # noqa: E501
+    def set_product_plan(self, product_plan_update, **kwargs):  # noqa: E501
         """Set Product Plan  # noqa: E501
 
         Update the Explorer product plan to which the user is subscribed. If the change is an upgrade, the product plan is instantly changed and a prorated amount is charged and prorated credits are added to the account. If the change is a downgrade, a change is scheduled for the start of the next billing cycle  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.set_product_plan(async_req=True)
+        >>> thread = api.set_product_plan(product_plan_update, async_req=True)
         >>> result = thread.get()
 
-        :param product_plan_update: The new product plan handle
+        :param product_plan_update: The new product plan handle (required)
         :type product_plan_update: ProductPlanUpdate
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -2521,19 +2529,19 @@ class AccountsApi(object):
         :rtype: ProductChangeResponse
         """
         kwargs['_return_http_data_only'] = True
-        return self.set_product_plan_with_http_info(**kwargs)  # noqa: E501
+        return self.set_product_plan_with_http_info(product_plan_update, **kwargs)  # noqa: E501
 
-    def set_product_plan_with_http_info(self, **kwargs):  # noqa: E501
+    def set_product_plan_with_http_info(self, product_plan_update, **kwargs):  # noqa: E501
         """Set Product Plan  # noqa: E501
 
         Update the Explorer product plan to which the user is subscribed. If the change is an upgrade, the product plan is instantly changed and a prorated amount is charged and prorated credits are added to the account. If the change is a downgrade, a change is scheduled for the start of the next billing cycle  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.set_product_plan_with_http_info(async_req=True)
+        >>> thread = api.set_product_plan_with_http_info(product_plan_update, async_req=True)
         >>> result = thread.get()
 
-        :param product_plan_update: The new product plan handle
+        :param product_plan_update: The new product plan handle (required)
         :type product_plan_update: ProductPlanUpdate
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -2581,6 +2589,10 @@ class AccountsApi(object):
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
+        # verify the required parameter 'product_plan_update' is set
+        if self.api_client.client_side_validation and ('product_plan_update' not in local_var_params or  # noqa: E501
+                                                        local_var_params['product_plan_update'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `product_plan_update` when calling `set_product_plan`")  # noqa: E501
 
         collection_formats = {}
 
@@ -2628,17 +2640,17 @@ class AccountsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def update_user_settings(self, **kwargs):  # noqa: E501
+    def update_user_settings(self, user_setting, **kwargs):  # noqa: E501
         """Update User Settings  # noqa: E501
 
         Updates user setting. Send a GET to the same url to get all available settings and their possible values.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_user_settings(async_req=True)
+        >>> thread = api.update_user_settings(user_setting, async_req=True)
         >>> result = thread.get()
 
-        :param user_setting: The settings
+        :param user_setting: The settings (required)
         :type user_setting: list[UserSetting]
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -2656,19 +2668,19 @@ class AccountsApi(object):
         :rtype: list[UserSetting]
         """
         kwargs['_return_http_data_only'] = True
-        return self.update_user_settings_with_http_info(**kwargs)  # noqa: E501
+        return self.update_user_settings_with_http_info(user_setting, **kwargs)  # noqa: E501
 
-    def update_user_settings_with_http_info(self, **kwargs):  # noqa: E501
+    def update_user_settings_with_http_info(self, user_setting, **kwargs):  # noqa: E501
         """Update User Settings  # noqa: E501
 
         Updates user setting. Send a GET to the same url to get all available settings and their possible values.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_user_settings_with_http_info(async_req=True)
+        >>> thread = api.update_user_settings_with_http_info(user_setting, async_req=True)
         >>> result = thread.get()
 
-        :param user_setting: The settings
+        :param user_setting: The settings (required)
         :type user_setting: list[UserSetting]
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -2716,6 +2728,10 @@ class AccountsApi(object):
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
+        # verify the required parameter 'user_setting' is set
+        if self.api_client.client_side_validation and ('user_setting' not in local_var_params or  # noqa: E501
+                                                        local_var_params['user_setting'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `user_setting` when calling `update_user_settings`")  # noqa: E501
 
         collection_formats = {}
 

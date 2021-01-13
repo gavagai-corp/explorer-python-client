@@ -36,18 +36,18 @@ class TonalityCustomizationApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def create_tonality_customization(self, **kwargs):  # noqa: E501
+    def create_tonality_customization(self, tonality_customization_request, **kwargs):  # noqa: E501
         """Create Tonality Customization  # noqa: E501
 
         Create a new tonality customization  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_tonality_customization(async_req=True)
+        >>> thread = api.create_tonality_customization(tonality_customization_request, async_req=True)
         >>> result = thread.get()
 
-        :param tonality_customization: TonalityCustomization the tonality customization to create
-        :type tonality_customization: TonalityCustomization
+        :param tonality_customization_request: TonalityCustomization the tonality customization to create (required)
+        :type tonality_customization_request: TonalityCustomizationRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -64,20 +64,20 @@ class TonalityCustomizationApi(object):
         :rtype: TonalityCustomization
         """
         kwargs['_return_http_data_only'] = True
-        return self.create_tonality_customization_with_http_info(**kwargs)  # noqa: E501
+        return self.create_tonality_customization_with_http_info(tonality_customization_request, **kwargs)  # noqa: E501
 
-    def create_tonality_customization_with_http_info(self, **kwargs):  # noqa: E501
+    def create_tonality_customization_with_http_info(self, tonality_customization_request, **kwargs):  # noqa: E501
         """Create Tonality Customization  # noqa: E501
 
         Create a new tonality customization  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_tonality_customization_with_http_info(async_req=True)
+        >>> thread = api.create_tonality_customization_with_http_info(tonality_customization_request, async_req=True)
         >>> result = thread.get()
 
-        :param tonality_customization: TonalityCustomization the tonality customization to create
-        :type tonality_customization: TonalityCustomization
+        :param tonality_customization_request: TonalityCustomization the tonality customization to create (required)
+        :type tonality_customization_request: TonalityCustomizationRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -104,7 +104,7 @@ class TonalityCustomizationApi(object):
         local_var_params = locals()
 
         all_params = [
-            'tonality_customization'
+            'tonality_customization_request'
         ]
         all_params.extend(
             [
@@ -124,6 +124,10 @@ class TonalityCustomizationApi(object):
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
+        # verify the required parameter 'tonality_customization_request' is set
+        if self.api_client.client_side_validation and ('tonality_customization_request' not in local_var_params or  # noqa: E501
+                                                        local_var_params['tonality_customization_request'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `tonality_customization_request` when calling `create_tonality_customization`")  # noqa: E501
 
         collection_formats = {}
 
@@ -137,8 +141,8 @@ class TonalityCustomizationApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'tonality_customization' in local_var_params:
-            body_params = local_var_params['tonality_customization']
+        if 'tonality_customization_request' in local_var_params:
+            body_params = local_var_params['tonality_customization_request']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -563,20 +567,20 @@ class TonalityCustomizationApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def get_tonality_details_for_terms(self, language, **kwargs):  # noqa: E501
+    def get_tonality_details_for_terms(self, terms, language, **kwargs):  # noqa: E501
         """Get Term Tonalitites  # noqa: E501
 
         Get the tonality details of terms, currently, the list of tones to which they belong.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_tonality_details_for_terms(language, async_req=True)
+        >>> thread = api.get_tonality_details_for_terms(terms, language, async_req=True)
         >>> result = thread.get()
 
+        :param terms: The terms for which the details are required (required)
+        :type terms: list[str]
         :param language: The language (required)
         :type language: str
-        :param terms: The terms for which the details are required
-        :type terms: list[str]
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -593,22 +597,22 @@ class TonalityCustomizationApi(object):
         :rtype: TermsTonalityDetails
         """
         kwargs['_return_http_data_only'] = True
-        return self.get_tonality_details_for_terms_with_http_info(language, **kwargs)  # noqa: E501
+        return self.get_tonality_details_for_terms_with_http_info(terms, language, **kwargs)  # noqa: E501
 
-    def get_tonality_details_for_terms_with_http_info(self, language, **kwargs):  # noqa: E501
+    def get_tonality_details_for_terms_with_http_info(self, terms, language, **kwargs):  # noqa: E501
         """Get Term Tonalitites  # noqa: E501
 
         Get the tonality details of terms, currently, the list of tones to which they belong.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_tonality_details_for_terms_with_http_info(language, async_req=True)
+        >>> thread = api.get_tonality_details_for_terms_with_http_info(terms, language, async_req=True)
         >>> result = thread.get()
 
+        :param terms: The terms for which the details are required (required)
+        :type terms: list[str]
         :param language: The language (required)
         :type language: str
-        :param terms: The terms for which the details are required
-        :type terms: list[str]
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -635,8 +639,8 @@ class TonalityCustomizationApi(object):
         local_var_params = locals()
 
         all_params = [
-            'language',
-            'terms'
+            'terms',
+            'language'
         ]
         all_params.extend(
             [
@@ -656,6 +660,10 @@ class TonalityCustomizationApi(object):
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
+        # verify the required parameter 'terms' is set
+        if self.api_client.client_side_validation and ('terms' not in local_var_params or  # noqa: E501
+                                                        local_var_params['terms'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `terms` when calling `get_tonality_details_for_terms`")  # noqa: E501
         # verify the required parameter 'language' is set
         if self.api_client.client_side_validation and ('language' not in local_var_params or  # noqa: E501
                                                         local_var_params['language'] is None):  # noqa: E501
@@ -712,20 +720,20 @@ class TonalityCustomizationApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def update_tonality_customization(self, id, **kwargs):  # noqa: E501
+    def update_tonality_customization(self, id, tonality_customization_request, **kwargs):  # noqa: E501
         """Update Tonality Customization  # noqa: E501
 
         Update a tonality customization identified by the specified id  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_tonality_customization(id, async_req=True)
+        >>> thread = api.update_tonality_customization(id, tonality_customization_request, async_req=True)
         >>> result = thread.get()
 
         :param id: The id of the customization to update (required)
         :type id: int
-        :param tonality_customization: The updated tonality customization
-        :type tonality_customization: TonalityCustomization
+        :param tonality_customization_request: The updated tonality customization (required)
+        :type tonality_customization_request: TonalityCustomizationRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -742,22 +750,22 @@ class TonalityCustomizationApi(object):
         :rtype: TonalityCustomization
         """
         kwargs['_return_http_data_only'] = True
-        return self.update_tonality_customization_with_http_info(id, **kwargs)  # noqa: E501
+        return self.update_tonality_customization_with_http_info(id, tonality_customization_request, **kwargs)  # noqa: E501
 
-    def update_tonality_customization_with_http_info(self, id, **kwargs):  # noqa: E501
+    def update_tonality_customization_with_http_info(self, id, tonality_customization_request, **kwargs):  # noqa: E501
         """Update Tonality Customization  # noqa: E501
 
         Update a tonality customization identified by the specified id  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_tonality_customization_with_http_info(id, async_req=True)
+        >>> thread = api.update_tonality_customization_with_http_info(id, tonality_customization_request, async_req=True)
         >>> result = thread.get()
 
         :param id: The id of the customization to update (required)
         :type id: int
-        :param tonality_customization: The updated tonality customization
-        :type tonality_customization: TonalityCustomization
+        :param tonality_customization_request: The updated tonality customization (required)
+        :type tonality_customization_request: TonalityCustomizationRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -785,7 +793,7 @@ class TonalityCustomizationApi(object):
 
         all_params = [
             'id',
-            'tonality_customization'
+            'tonality_customization_request'
         ]
         all_params.extend(
             [
@@ -809,6 +817,10 @@ class TonalityCustomizationApi(object):
         if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
                                                         local_var_params['id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `update_tonality_customization`")  # noqa: E501
+        # verify the required parameter 'tonality_customization_request' is set
+        if self.api_client.client_side_validation and ('tonality_customization_request' not in local_var_params or  # noqa: E501
+                                                        local_var_params['tonality_customization_request'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `tonality_customization_request` when calling `update_tonality_customization`")  # noqa: E501
 
         collection_formats = {}
 
@@ -824,8 +836,8 @@ class TonalityCustomizationApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'tonality_customization' in local_var_params:
-            body_params = local_var_params['tonality_customization']
+        if 'tonality_customization_request' in local_var_params:
+            body_params = local_var_params['tonality_customization_request']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501

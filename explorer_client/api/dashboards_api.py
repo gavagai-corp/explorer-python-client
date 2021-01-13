@@ -36,19 +36,19 @@ class DashboardsApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def create_dashboard_graph(self, id, **kwargs):  # noqa: E501
+    def create_dashboard_graph(self, id, create_graph_request, **kwargs):  # noqa: E501
         """Create Graph  # noqa: E501
 
         Creates a graph in the dashboard  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_dashboard_graph(id, async_req=True)
+        >>> thread = api.create_dashboard_graph(id, create_graph_request, async_req=True)
         >>> result = thread.get()
 
         :param id: The project identifier (required)
         :type id: int
-        :param create_graph_request: The graph creation request
+        :param create_graph_request: The graph creation request (required)
         :type create_graph_request: CreateGraphRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -66,21 +66,21 @@ class DashboardsApi(object):
         :rtype: GraphInfo
         """
         kwargs['_return_http_data_only'] = True
-        return self.create_dashboard_graph_with_http_info(id, **kwargs)  # noqa: E501
+        return self.create_dashboard_graph_with_http_info(id, create_graph_request, **kwargs)  # noqa: E501
 
-    def create_dashboard_graph_with_http_info(self, id, **kwargs):  # noqa: E501
+    def create_dashboard_graph_with_http_info(self, id, create_graph_request, **kwargs):  # noqa: E501
         """Create Graph  # noqa: E501
 
         Creates a graph in the dashboard  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_dashboard_graph_with_http_info(id, async_req=True)
+        >>> thread = api.create_dashboard_graph_with_http_info(id, create_graph_request, async_req=True)
         >>> result = thread.get()
 
         :param id: The project identifier (required)
         :type id: int
-        :param create_graph_request: The graph creation request
+        :param create_graph_request: The graph creation request (required)
         :type create_graph_request: CreateGraphRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -133,6 +133,10 @@ class DashboardsApi(object):
         if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
                                                         local_var_params['id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `create_dashboard_graph`")  # noqa: E501
+        # verify the required parameter 'create_graph_request' is set
+        if self.api_client.client_side_validation and ('create_graph_request' not in local_var_params or  # noqa: E501
+                                                        local_var_params['create_graph_request'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `create_graph_request` when calling `create_dashboard_graph`")  # noqa: E501
 
         collection_formats = {}
 
@@ -182,19 +186,19 @@ class DashboardsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def create_topic_graph(self, id, **kwargs):  # noqa: E501
+    def create_topic_graph(self, id, topic_graph_create_request, **kwargs):  # noqa: E501
         """Create topic Graphs  # noqa: E501
 
         Creates a topic graph  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_topic_graph(id, async_req=True)
+        >>> thread = api.create_topic_graph(id, topic_graph_create_request, async_req=True)
         >>> result = thread.get()
 
         :param id: The project identifier (required)
         :type id: int
-        :param topic_graph_create_request: The topic graph creation request
+        :param topic_graph_create_request: The topic graph creation request (required)
         :type topic_graph_create_request: TopicGraphCreateRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -212,21 +216,21 @@ class DashboardsApi(object):
         :rtype: TopicGraphInfo
         """
         kwargs['_return_http_data_only'] = True
-        return self.create_topic_graph_with_http_info(id, **kwargs)  # noqa: E501
+        return self.create_topic_graph_with_http_info(id, topic_graph_create_request, **kwargs)  # noqa: E501
 
-    def create_topic_graph_with_http_info(self, id, **kwargs):  # noqa: E501
+    def create_topic_graph_with_http_info(self, id, topic_graph_create_request, **kwargs):  # noqa: E501
         """Create topic Graphs  # noqa: E501
 
         Creates a topic graph  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_topic_graph_with_http_info(id, async_req=True)
+        >>> thread = api.create_topic_graph_with_http_info(id, topic_graph_create_request, async_req=True)
         >>> result = thread.get()
 
         :param id: The project identifier (required)
         :type id: int
-        :param topic_graph_create_request: The topic graph creation request
+        :param topic_graph_create_request: The topic graph creation request (required)
         :type topic_graph_create_request: TopicGraphCreateRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -279,6 +283,10 @@ class DashboardsApi(object):
         if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
                                                         local_var_params['id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `create_topic_graph`")  # noqa: E501
+        # verify the required parameter 'topic_graph_create_request' is set
+        if self.api_client.client_side_validation and ('topic_graph_create_request' not in local_var_params or  # noqa: E501
+                                                        local_var_params['topic_graph_create_request'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `topic_graph_create_request` when calling `create_topic_graph`")  # noqa: E501
 
         collection_formats = {}
 
@@ -1470,152 +1478,6 @@ class DashboardsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def get_groupd_comparison_graph_data(self, id, graph_id, **kwargs):  # noqa: E501
-        """Get Grouped Comparison Graph  # noqa: E501
-
-        Get grouped comparison graph data  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.get_groupd_comparison_graph_data(id, graph_id, async_req=True)
-        >>> result = thread.get()
-
-        :param id: The project identifier (required)
-        :type id: int
-        :param graph_id: The graph identifier (required)
-        :type graph_id: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: GroupedComparisonGraphResponse
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.get_groupd_comparison_graph_data_with_http_info(id, graph_id, **kwargs)  # noqa: E501
-
-    def get_groupd_comparison_graph_data_with_http_info(self, id, graph_id, **kwargs):  # noqa: E501
-        """Get Grouped Comparison Graph  # noqa: E501
-
-        Get grouped comparison graph data  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.get_groupd_comparison_graph_data_with_http_info(id, graph_id, async_req=True)
-        >>> result = thread.get()
-
-        :param id: The project identifier (required)
-        :type id: int
-        :param graph_id: The graph identifier (required)
-        :type graph_id: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :type _return_http_data_only: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(GroupedComparisonGraphResponse, status_code(int), headers(HTTPHeaderDict))
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'id',
-            'graph_id'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
-            ]
-        )
-
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_groupd_comparison_graph_data" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `id` when calling `get_groupd_comparison_graph_data`")  # noqa: E501
-        # verify the required parameter 'graph_id' is set
-        if self.api_client.client_side_validation and ('graph_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['graph_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `graph_id` when calling `get_groupd_comparison_graph_data`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'id' in local_var_params:
-            path_params['id'] = local_var_params['id']  # noqa: E501
-        if 'graph_id' in local_var_params:
-            path_params['graphId'] = local_var_params['graph_id']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
-        
-        response_types_map = {
-            200: "GroupedComparisonGraphResponse",
-        }
-
-        return self.api_client.call_api(
-            '/projects/{id}/explore/dashboard/graphs/{graphId}/grouped_comparison', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_types_map=response_types_map,
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
-
     def get_grouped_comparison_graph_context(self, id, **kwargs):  # noqa: E501
         """Get Grouped Comparison Graph Context  # noqa: E501
 
@@ -1736,6 +1598,152 @@ class DashboardsApi(object):
 
         return self.api_client.call_api(
             '/projects/{id}/explore/dashboard/graphs/comparison_grouped_context', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
+    def get_grouped_comparison_graph_data(self, id, graph_id, **kwargs):  # noqa: E501
+        """Get Grouped Comparison Graph  # noqa: E501
+
+        Get grouped comparison graph data  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_grouped_comparison_graph_data(id, graph_id, async_req=True)
+        >>> result = thread.get()
+
+        :param id: The project identifier (required)
+        :type id: int
+        :param graph_id: The graph identifier (required)
+        :type graph_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: GroupedComparisonGraphResponse
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.get_grouped_comparison_graph_data_with_http_info(id, graph_id, **kwargs)  # noqa: E501
+
+    def get_grouped_comparison_graph_data_with_http_info(self, id, graph_id, **kwargs):  # noqa: E501
+        """Get Grouped Comparison Graph  # noqa: E501
+
+        Get grouped comparison graph data  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_grouped_comparison_graph_data_with_http_info(id, graph_id, async_req=True)
+        >>> result = thread.get()
+
+        :param id: The project identifier (required)
+        :type id: int
+        :param graph_id: The graph identifier (required)
+        :type graph_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(GroupedComparisonGraphResponse, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'id',
+            'graph_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_grouped_comparison_graph_data" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'id' is set
+        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `id` when calling `get_grouped_comparison_graph_data`")  # noqa: E501
+        # verify the required parameter 'graph_id' is set
+        if self.api_client.client_side_validation and ('graph_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['graph_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `graph_id` when calling `get_grouped_comparison_graph_data`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'id' in local_var_params:
+            path_params['id'] = local_var_params['id']  # noqa: E501
+        if 'graph_id' in local_var_params:
+            path_params['graphId'] = local_var_params['graph_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['basicAuth']  # noqa: E501
+        
+        response_types_map = {
+            200: "GroupedComparisonGraphResponse",
+        }
+
+        return self.api_client.call_api(
+            '/projects/{id}/explore/dashboard/graphs/{graphId}/grouped_comparison', 'GET',
             path_params,
             query_params,
             header_params,
@@ -3242,21 +3250,21 @@ class DashboardsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def modify_dashboard_graph(self, id, graph_id, **kwargs):  # noqa: E501
+    def modify_dashboard_graph(self, id, graph_id, create_graph_request, **kwargs):  # noqa: E501
         """Update Graph  # noqa: E501
 
         Modifies the the graph  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.modify_dashboard_graph(id, graph_id, async_req=True)
+        >>> thread = api.modify_dashboard_graph(id, graph_id, create_graph_request, async_req=True)
         >>> result = thread.get()
 
         :param id: The project identifier (required)
         :type id: int
         :param graph_id: The graph identifier (required)
         :type graph_id: str
-        :param create_graph_request: The graph update request
+        :param create_graph_request: The graph update request (required)
         :type create_graph_request: CreateGraphRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -3274,23 +3282,23 @@ class DashboardsApi(object):
         :rtype: GraphInfo
         """
         kwargs['_return_http_data_only'] = True
-        return self.modify_dashboard_graph_with_http_info(id, graph_id, **kwargs)  # noqa: E501
+        return self.modify_dashboard_graph_with_http_info(id, graph_id, create_graph_request, **kwargs)  # noqa: E501
 
-    def modify_dashboard_graph_with_http_info(self, id, graph_id, **kwargs):  # noqa: E501
+    def modify_dashboard_graph_with_http_info(self, id, graph_id, create_graph_request, **kwargs):  # noqa: E501
         """Update Graph  # noqa: E501
 
         Modifies the the graph  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.modify_dashboard_graph_with_http_info(id, graph_id, async_req=True)
+        >>> thread = api.modify_dashboard_graph_with_http_info(id, graph_id, create_graph_request, async_req=True)
         >>> result = thread.get()
 
         :param id: The project identifier (required)
         :type id: int
         :param graph_id: The graph identifier (required)
         :type graph_id: str
-        :param create_graph_request: The graph update request
+        :param create_graph_request: The graph update request (required)
         :type create_graph_request: CreateGraphRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -3348,6 +3356,10 @@ class DashboardsApi(object):
         if self.api_client.client_side_validation and ('graph_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['graph_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `graph_id` when calling `modify_dashboard_graph`")  # noqa: E501
+        # verify the required parameter 'create_graph_request' is set
+        if self.api_client.client_side_validation and ('create_graph_request' not in local_var_params or  # noqa: E501
+                                                        local_var_params['create_graph_request'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `create_graph_request` when calling `modify_dashboard_graph`")  # noqa: E501
 
         collection_formats = {}
 
@@ -3399,21 +3411,21 @@ class DashboardsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def set_associations_timeseries_graph_context(self, id, graph_id, **kwargs):  # noqa: E501
+    def set_associations_timeseries_graph_context(self, id, graph_id, associations_timeseries_graph_context, **kwargs):  # noqa: E501
         """Update the context of the Associations Timeseries graph data  # noqa: E501
 
         Put the context of the Associations Timeseries graph data  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.set_associations_timeseries_graph_context(id, graph_id, async_req=True)
+        >>> thread = api.set_associations_timeseries_graph_context(id, graph_id, associations_timeseries_graph_context, async_req=True)
         >>> result = thread.get()
 
         :param id: The project identifier (required)
         :type id: int
         :param graph_id: The graph identifier (required)
         :type graph_id: str
-        :param associations_timeseries_graph_context: The request body
+        :param associations_timeseries_graph_context: The request body (required)
         :type associations_timeseries_graph_context: AssociationsTimeseriesGraphContext
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -3431,23 +3443,23 @@ class DashboardsApi(object):
         :rtype: None
         """
         kwargs['_return_http_data_only'] = True
-        return self.set_associations_timeseries_graph_context_with_http_info(id, graph_id, **kwargs)  # noqa: E501
+        return self.set_associations_timeseries_graph_context_with_http_info(id, graph_id, associations_timeseries_graph_context, **kwargs)  # noqa: E501
 
-    def set_associations_timeseries_graph_context_with_http_info(self, id, graph_id, **kwargs):  # noqa: E501
+    def set_associations_timeseries_graph_context_with_http_info(self, id, graph_id, associations_timeseries_graph_context, **kwargs):  # noqa: E501
         """Update the context of the Associations Timeseries graph data  # noqa: E501
 
         Put the context of the Associations Timeseries graph data  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.set_associations_timeseries_graph_context_with_http_info(id, graph_id, async_req=True)
+        >>> thread = api.set_associations_timeseries_graph_context_with_http_info(id, graph_id, associations_timeseries_graph_context, async_req=True)
         >>> result = thread.get()
 
         :param id: The project identifier (required)
         :type id: int
         :param graph_id: The graph identifier (required)
         :type graph_id: str
-        :param associations_timeseries_graph_context: The request body
+        :param associations_timeseries_graph_context: The request body (required)
         :type associations_timeseries_graph_context: AssociationsTimeseriesGraphContext
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -3505,6 +3517,10 @@ class DashboardsApi(object):
         if self.api_client.client_side_validation and ('graph_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['graph_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `graph_id` when calling `set_associations_timeseries_graph_context`")  # noqa: E501
+        # verify the required parameter 'associations_timeseries_graph_context' is set
+        if self.api_client.client_side_validation and ('associations_timeseries_graph_context' not in local_var_params or  # noqa: E501
+                                                        local_var_params['associations_timeseries_graph_context'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `associations_timeseries_graph_context` when calling `set_associations_timeseries_graph_context`")  # noqa: E501
 
         collection_formats = {}
 
@@ -3554,21 +3570,21 @@ class DashboardsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def set_net_sentiment_timeseries_graph_context(self, id, graph_id, **kwargs):  # noqa: E501
+    def set_net_sentiment_timeseries_graph_context(self, id, graph_id, net_sentiment_timeseries_graph_context, **kwargs):  # noqa: E501
         """Update Net Sentiment Timeseries Context  # noqa: E501
 
         Put the context of the Net Sentiment Timeseries graph data  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.set_net_sentiment_timeseries_graph_context(id, graph_id, async_req=True)
+        >>> thread = api.set_net_sentiment_timeseries_graph_context(id, graph_id, net_sentiment_timeseries_graph_context, async_req=True)
         >>> result = thread.get()
 
         :param id: The project identifier (required)
         :type id: int
         :param graph_id: The graph identifier (required)
         :type graph_id: str
-        :param net_sentiment_timeseries_graph_context: The request body
+        :param net_sentiment_timeseries_graph_context: The request body (required)
         :type net_sentiment_timeseries_graph_context: NetSentimentTimeseriesGraphContext
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -3586,23 +3602,23 @@ class DashboardsApi(object):
         :rtype: None
         """
         kwargs['_return_http_data_only'] = True
-        return self.set_net_sentiment_timeseries_graph_context_with_http_info(id, graph_id, **kwargs)  # noqa: E501
+        return self.set_net_sentiment_timeseries_graph_context_with_http_info(id, graph_id, net_sentiment_timeseries_graph_context, **kwargs)  # noqa: E501
 
-    def set_net_sentiment_timeseries_graph_context_with_http_info(self, id, graph_id, **kwargs):  # noqa: E501
+    def set_net_sentiment_timeseries_graph_context_with_http_info(self, id, graph_id, net_sentiment_timeseries_graph_context, **kwargs):  # noqa: E501
         """Update Net Sentiment Timeseries Context  # noqa: E501
 
         Put the context of the Net Sentiment Timeseries graph data  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.set_net_sentiment_timeseries_graph_context_with_http_info(id, graph_id, async_req=True)
+        >>> thread = api.set_net_sentiment_timeseries_graph_context_with_http_info(id, graph_id, net_sentiment_timeseries_graph_context, async_req=True)
         >>> result = thread.get()
 
         :param id: The project identifier (required)
         :type id: int
         :param graph_id: The graph identifier (required)
         :type graph_id: str
-        :param net_sentiment_timeseries_graph_context: The request body
+        :param net_sentiment_timeseries_graph_context: The request body (required)
         :type net_sentiment_timeseries_graph_context: NetSentimentTimeseriesGraphContext
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -3660,6 +3676,10 @@ class DashboardsApi(object):
         if self.api_client.client_side_validation and ('graph_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['graph_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `graph_id` when calling `set_net_sentiment_timeseries_graph_context`")  # noqa: E501
+        # verify the required parameter 'net_sentiment_timeseries_graph_context' is set
+        if self.api_client.client_side_validation and ('net_sentiment_timeseries_graph_context' not in local_var_params or  # noqa: E501
+                                                        local_var_params['net_sentiment_timeseries_graph_context'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `net_sentiment_timeseries_graph_context` when calling `set_net_sentiment_timeseries_graph_context`")  # noqa: E501
 
         collection_formats = {}
 
@@ -3709,21 +3729,21 @@ class DashboardsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def set_topic_average_score_matrix_graph_context(self, id, graph_id, **kwargs):  # noqa: E501
+    def set_topic_average_score_matrix_graph_context(self, id, graph_id, topic_average_score_matrix_graph_context, **kwargs):  # noqa: E501
         """Put the context of the Average Score Matrix  # noqa: E501
 
         Put the context of the Average Score Matrix graph data  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.set_topic_average_score_matrix_graph_context(id, graph_id, async_req=True)
+        >>> thread = api.set_topic_average_score_matrix_graph_context(id, graph_id, topic_average_score_matrix_graph_context, async_req=True)
         >>> result = thread.get()
 
         :param id: The project identifier (required)
         :type id: int
         :param graph_id: The graph identifier (required)
         :type graph_id: str
-        :param topic_average_score_matrix_graph_context: The request body
+        :param topic_average_score_matrix_graph_context: The request body (required)
         :type topic_average_score_matrix_graph_context: TopicAverageScoreMatrixGraphContext
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -3741,23 +3761,23 @@ class DashboardsApi(object):
         :rtype: None
         """
         kwargs['_return_http_data_only'] = True
-        return self.set_topic_average_score_matrix_graph_context_with_http_info(id, graph_id, **kwargs)  # noqa: E501
+        return self.set_topic_average_score_matrix_graph_context_with_http_info(id, graph_id, topic_average_score_matrix_graph_context, **kwargs)  # noqa: E501
 
-    def set_topic_average_score_matrix_graph_context_with_http_info(self, id, graph_id, **kwargs):  # noqa: E501
+    def set_topic_average_score_matrix_graph_context_with_http_info(self, id, graph_id, topic_average_score_matrix_graph_context, **kwargs):  # noqa: E501
         """Put the context of the Average Score Matrix  # noqa: E501
 
         Put the context of the Average Score Matrix graph data  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.set_topic_average_score_matrix_graph_context_with_http_info(id, graph_id, async_req=True)
+        >>> thread = api.set_topic_average_score_matrix_graph_context_with_http_info(id, graph_id, topic_average_score_matrix_graph_context, async_req=True)
         >>> result = thread.get()
 
         :param id: The project identifier (required)
         :type id: int
         :param graph_id: The graph identifier (required)
         :type graph_id: str
-        :param topic_average_score_matrix_graph_context: The request body
+        :param topic_average_score_matrix_graph_context: The request body (required)
         :type topic_average_score_matrix_graph_context: TopicAverageScoreMatrixGraphContext
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -3815,6 +3835,10 @@ class DashboardsApi(object):
         if self.api_client.client_side_validation and ('graph_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['graph_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `graph_id` when calling `set_topic_average_score_matrix_graph_context`")  # noqa: E501
+        # verify the required parameter 'topic_average_score_matrix_graph_context' is set
+        if self.api_client.client_side_validation and ('topic_average_score_matrix_graph_context' not in local_var_params or  # noqa: E501
+                                                        local_var_params['topic_average_score_matrix_graph_context'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `topic_average_score_matrix_graph_context` when calling `set_topic_average_score_matrix_graph_context`")  # noqa: E501
 
         collection_formats = {}
 
@@ -3864,21 +3888,21 @@ class DashboardsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def set_topic_information_graph_context(self, id, graph_id, **kwargs):  # noqa: E501
+    def set_topic_information_graph_context(self, id, graph_id, topic_information_graph_context, **kwargs):  # noqa: E501
         """Put the context of the Topic Information graph data  # noqa: E501
 
         Put the context of the Topic Information graph data  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.set_topic_information_graph_context(id, graph_id, async_req=True)
+        >>> thread = api.set_topic_information_graph_context(id, graph_id, topic_information_graph_context, async_req=True)
         >>> result = thread.get()
 
         :param id: The project identifier (required)
         :type id: int
         :param graph_id: The graph identifier (required)
         :type graph_id: str
-        :param topic_information_graph_context: The request body
+        :param topic_information_graph_context: The request body (required)
         :type topic_information_graph_context: TopicInformationGraphContext
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -3896,23 +3920,23 @@ class DashboardsApi(object):
         :rtype: None
         """
         kwargs['_return_http_data_only'] = True
-        return self.set_topic_information_graph_context_with_http_info(id, graph_id, **kwargs)  # noqa: E501
+        return self.set_topic_information_graph_context_with_http_info(id, graph_id, topic_information_graph_context, **kwargs)  # noqa: E501
 
-    def set_topic_information_graph_context_with_http_info(self, id, graph_id, **kwargs):  # noqa: E501
+    def set_topic_information_graph_context_with_http_info(self, id, graph_id, topic_information_graph_context, **kwargs):  # noqa: E501
         """Put the context of the Topic Information graph data  # noqa: E501
 
         Put the context of the Topic Information graph data  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.set_topic_information_graph_context_with_http_info(id, graph_id, async_req=True)
+        >>> thread = api.set_topic_information_graph_context_with_http_info(id, graph_id, topic_information_graph_context, async_req=True)
         >>> result = thread.get()
 
         :param id: The project identifier (required)
         :type id: int
         :param graph_id: The graph identifier (required)
         :type graph_id: str
-        :param topic_information_graph_context: The request body
+        :param topic_information_graph_context: The request body (required)
         :type topic_information_graph_context: TopicInformationGraphContext
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -3970,6 +3994,10 @@ class DashboardsApi(object):
         if self.api_client.client_side_validation and ('graph_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['graph_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `graph_id` when calling `set_topic_information_graph_context`")  # noqa: E501
+        # verify the required parameter 'topic_information_graph_context' is set
+        if self.api_client.client_side_validation and ('topic_information_graph_context' not in local_var_params or  # noqa: E501
+                                                        local_var_params['topic_information_graph_context'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `topic_information_graph_context` when calling `set_topic_information_graph_context`")  # noqa: E501
 
         collection_formats = {}
 
@@ -4019,21 +4047,21 @@ class DashboardsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def set_topic_text_examples_context(self, id, graph_id, **kwargs):  # noqa: E501
+    def set_topic_text_examples_context(self, id, graph_id, topic_text_examples_graph_context, **kwargs):  # noqa: E501
         """Put the context of the Topic Text examples graph data  # noqa: E501
 
         Put the context of the Topic Text examples graph data  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.set_topic_text_examples_context(id, graph_id, async_req=True)
+        >>> thread = api.set_topic_text_examples_context(id, graph_id, topic_text_examples_graph_context, async_req=True)
         >>> result = thread.get()
 
         :param id: The project identifier (required)
         :type id: int
         :param graph_id: The graph identifier (required)
         :type graph_id: str
-        :param topic_text_examples_graph_context: The request body
+        :param topic_text_examples_graph_context: The request body (required)
         :type topic_text_examples_graph_context: TopicTextExamplesGraphContext
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -4051,23 +4079,23 @@ class DashboardsApi(object):
         :rtype: None
         """
         kwargs['_return_http_data_only'] = True
-        return self.set_topic_text_examples_context_with_http_info(id, graph_id, **kwargs)  # noqa: E501
+        return self.set_topic_text_examples_context_with_http_info(id, graph_id, topic_text_examples_graph_context, **kwargs)  # noqa: E501
 
-    def set_topic_text_examples_context_with_http_info(self, id, graph_id, **kwargs):  # noqa: E501
+    def set_topic_text_examples_context_with_http_info(self, id, graph_id, topic_text_examples_graph_context, **kwargs):  # noqa: E501
         """Put the context of the Topic Text examples graph data  # noqa: E501
 
         Put the context of the Topic Text examples graph data  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.set_topic_text_examples_context_with_http_info(id, graph_id, async_req=True)
+        >>> thread = api.set_topic_text_examples_context_with_http_info(id, graph_id, topic_text_examples_graph_context, async_req=True)
         >>> result = thread.get()
 
         :param id: The project identifier (required)
         :type id: int
         :param graph_id: The graph identifier (required)
         :type graph_id: str
-        :param topic_text_examples_graph_context: The request body
+        :param topic_text_examples_graph_context: The request body (required)
         :type topic_text_examples_graph_context: TopicTextExamplesGraphContext
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -4125,6 +4153,10 @@ class DashboardsApi(object):
         if self.api_client.client_side_validation and ('graph_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['graph_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `graph_id` when calling `set_topic_text_examples_context`")  # noqa: E501
+        # verify the required parameter 'topic_text_examples_graph_context' is set
+        if self.api_client.client_side_validation and ('topic_text_examples_graph_context' not in local_var_params or  # noqa: E501
+                                                        local_var_params['topic_text_examples_graph_context'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `topic_text_examples_graph_context` when calling `set_topic_text_examples_context`")  # noqa: E501
 
         collection_formats = {}
 
@@ -4329,21 +4361,21 @@ class DashboardsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def start_average_score_graph_data(self, id, graph_id, **kwargs):  # noqa: E501
+    def start_average_score_graph_data(self, id, graph_id, average_score_graph_context, **kwargs):  # noqa: E501
         """Start AvgScore Calculation  # noqa: E501
 
         Starts the process of generating Average Score graph data  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.start_average_score_graph_data(id, graph_id, async_req=True)
+        >>> thread = api.start_average_score_graph_data(id, graph_id, average_score_graph_context, async_req=True)
         >>> result = thread.get()
 
         :param id: The project identifier (required)
         :type id: int
         :param graph_id: The graph identifier (required)
         :type graph_id: str
-        :param average_score_graph_context: The request body
+        :param average_score_graph_context: The request body (required)
         :type average_score_graph_context: AverageScoreGraphContext
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -4361,23 +4393,23 @@ class DashboardsApi(object):
         :rtype: None
         """
         kwargs['_return_http_data_only'] = True
-        return self.start_average_score_graph_data_with_http_info(id, graph_id, **kwargs)  # noqa: E501
+        return self.start_average_score_graph_data_with_http_info(id, graph_id, average_score_graph_context, **kwargs)  # noqa: E501
 
-    def start_average_score_graph_data_with_http_info(self, id, graph_id, **kwargs):  # noqa: E501
+    def start_average_score_graph_data_with_http_info(self, id, graph_id, average_score_graph_context, **kwargs):  # noqa: E501
         """Start AvgScore Calculation  # noqa: E501
 
         Starts the process of generating Average Score graph data  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.start_average_score_graph_data_with_http_info(id, graph_id, async_req=True)
+        >>> thread = api.start_average_score_graph_data_with_http_info(id, graph_id, average_score_graph_context, async_req=True)
         >>> result = thread.get()
 
         :param id: The project identifier (required)
         :type id: int
         :param graph_id: The graph identifier (required)
         :type graph_id: str
-        :param average_score_graph_context: The request body
+        :param average_score_graph_context: The request body (required)
         :type average_score_graph_context: AverageScoreGraphContext
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -4435,6 +4467,10 @@ class DashboardsApi(object):
         if self.api_client.client_side_validation and ('graph_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['graph_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `graph_id` when calling `start_average_score_graph_data`")  # noqa: E501
+        # verify the required parameter 'average_score_graph_context' is set
+        if self.api_client.client_side_validation and ('average_score_graph_context' not in local_var_params or  # noqa: E501
+                                                        local_var_params['average_score_graph_context'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `average_score_graph_context` when calling `start_average_score_graph_data`")  # noqa: E501
 
         collection_formats = {}
 
@@ -4484,21 +4520,21 @@ class DashboardsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def start_average_score_matrix_graph_data(self, id, graph_id, **kwargs):  # noqa: E501
+    def start_average_score_matrix_graph_data(self, id, graph_id, average_score_matrix_graph_context, **kwargs):  # noqa: E501
         """Start Average Score Matrix Calculation  # noqa: E501
 
         Starts the process of generating average score matrix graph data  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.start_average_score_matrix_graph_data(id, graph_id, async_req=True)
+        >>> thread = api.start_average_score_matrix_graph_data(id, graph_id, average_score_matrix_graph_context, async_req=True)
         >>> result = thread.get()
 
         :param id: The project identifier (required)
         :type id: int
         :param graph_id: The graph identifier (required)
         :type graph_id: str
-        :param average_score_matrix_graph_context: The request body
+        :param average_score_matrix_graph_context: The request body (required)
         :type average_score_matrix_graph_context: AverageScoreMatrixGraphContext
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -4516,23 +4552,23 @@ class DashboardsApi(object):
         :rtype: None
         """
         kwargs['_return_http_data_only'] = True
-        return self.start_average_score_matrix_graph_data_with_http_info(id, graph_id, **kwargs)  # noqa: E501
+        return self.start_average_score_matrix_graph_data_with_http_info(id, graph_id, average_score_matrix_graph_context, **kwargs)  # noqa: E501
 
-    def start_average_score_matrix_graph_data_with_http_info(self, id, graph_id, **kwargs):  # noqa: E501
+    def start_average_score_matrix_graph_data_with_http_info(self, id, graph_id, average_score_matrix_graph_context, **kwargs):  # noqa: E501
         """Start Average Score Matrix Calculation  # noqa: E501
 
         Starts the process of generating average score matrix graph data  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.start_average_score_matrix_graph_data_with_http_info(id, graph_id, async_req=True)
+        >>> thread = api.start_average_score_matrix_graph_data_with_http_info(id, graph_id, average_score_matrix_graph_context, async_req=True)
         >>> result = thread.get()
 
         :param id: The project identifier (required)
         :type id: int
         :param graph_id: The graph identifier (required)
         :type graph_id: str
-        :param average_score_matrix_graph_context: The request body
+        :param average_score_matrix_graph_context: The request body (required)
         :type average_score_matrix_graph_context: AverageScoreMatrixGraphContext
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -4590,6 +4626,10 @@ class DashboardsApi(object):
         if self.api_client.client_side_validation and ('graph_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['graph_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `graph_id` when calling `start_average_score_matrix_graph_data`")  # noqa: E501
+        # verify the required parameter 'average_score_matrix_graph_context' is set
+        if self.api_client.client_side_validation and ('average_score_matrix_graph_context' not in local_var_params or  # noqa: E501
+                                                        local_var_params['average_score_matrix_graph_context'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `average_score_matrix_graph_context` when calling `start_average_score_matrix_graph_data`")  # noqa: E501
 
         collection_formats = {}
 
@@ -4772,21 +4812,21 @@ class DashboardsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def start_grouped_comparison_graph_data(self, id, graph_id, **kwargs):  # noqa: E501
+    def start_grouped_comparison_graph_data(self, id, graph_id, grouped_comparison_graph_context, **kwargs):  # noqa: E501
         """Start Grouped Comparison Calculation  # noqa: E501
 
         Starts the process of generating grouped comparison graph data  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.start_grouped_comparison_graph_data(id, graph_id, async_req=True)
+        >>> thread = api.start_grouped_comparison_graph_data(id, graph_id, grouped_comparison_graph_context, async_req=True)
         >>> result = thread.get()
 
         :param id: The project identifier (required)
         :type id: int
         :param graph_id: The graph identifier (required)
         :type graph_id: str
-        :param grouped_comparison_graph_context: The request body
+        :param grouped_comparison_graph_context: The request body (required)
         :type grouped_comparison_graph_context: GroupedComparisonGraphContext
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -4804,23 +4844,23 @@ class DashboardsApi(object):
         :rtype: None
         """
         kwargs['_return_http_data_only'] = True
-        return self.start_grouped_comparison_graph_data_with_http_info(id, graph_id, **kwargs)  # noqa: E501
+        return self.start_grouped_comparison_graph_data_with_http_info(id, graph_id, grouped_comparison_graph_context, **kwargs)  # noqa: E501
 
-    def start_grouped_comparison_graph_data_with_http_info(self, id, graph_id, **kwargs):  # noqa: E501
+    def start_grouped_comparison_graph_data_with_http_info(self, id, graph_id, grouped_comparison_graph_context, **kwargs):  # noqa: E501
         """Start Grouped Comparison Calculation  # noqa: E501
 
         Starts the process of generating grouped comparison graph data  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.start_grouped_comparison_graph_data_with_http_info(id, graph_id, async_req=True)
+        >>> thread = api.start_grouped_comparison_graph_data_with_http_info(id, graph_id, grouped_comparison_graph_context, async_req=True)
         >>> result = thread.get()
 
         :param id: The project identifier (required)
         :type id: int
         :param graph_id: The graph identifier (required)
         :type graph_id: str
-        :param grouped_comparison_graph_context: The request body
+        :param grouped_comparison_graph_context: The request body (required)
         :type grouped_comparison_graph_context: GroupedComparisonGraphContext
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -4878,6 +4918,10 @@ class DashboardsApi(object):
         if self.api_client.client_side_validation and ('graph_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['graph_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `graph_id` when calling `start_grouped_comparison_graph_data`")  # noqa: E501
+        # verify the required parameter 'grouped_comparison_graph_context' is set
+        if self.api_client.client_side_validation and ('grouped_comparison_graph_context' not in local_var_params or  # noqa: E501
+                                                        local_var_params['grouped_comparison_graph_context'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `grouped_comparison_graph_context` when calling `start_grouped_comparison_graph_data`")  # noqa: E501
 
         collection_formats = {}
 
@@ -4927,21 +4971,21 @@ class DashboardsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def start_high_impact_association_graph_container(self, id, graph_id, **kwargs):  # noqa: E501
+    def start_high_impact_association_graph_container(self, id, graph_id, high_impact_associations_graph_context, **kwargs):  # noqa: E501
         """Start High Impact Topic Associations Calculation  # noqa: E501
 
         Starts the process of generating High Impact Topic Associations graph data  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.start_high_impact_association_graph_container(id, graph_id, async_req=True)
+        >>> thread = api.start_high_impact_association_graph_container(id, graph_id, high_impact_associations_graph_context, async_req=True)
         >>> result = thread.get()
 
         :param id: The project identifier (required)
         :type id: int
         :param graph_id: The graph identifier (required)
         :type graph_id: str
-        :param high_impact_associations_graph_context: The request body
+        :param high_impact_associations_graph_context: The request body (required)
         :type high_impact_associations_graph_context: HighImpactAssociationsGraphContext
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -4959,23 +5003,23 @@ class DashboardsApi(object):
         :rtype: None
         """
         kwargs['_return_http_data_only'] = True
-        return self.start_high_impact_association_graph_container_with_http_info(id, graph_id, **kwargs)  # noqa: E501
+        return self.start_high_impact_association_graph_container_with_http_info(id, graph_id, high_impact_associations_graph_context, **kwargs)  # noqa: E501
 
-    def start_high_impact_association_graph_container_with_http_info(self, id, graph_id, **kwargs):  # noqa: E501
+    def start_high_impact_association_graph_container_with_http_info(self, id, graph_id, high_impact_associations_graph_context, **kwargs):  # noqa: E501
         """Start High Impact Topic Associations Calculation  # noqa: E501
 
         Starts the process of generating High Impact Topic Associations graph data  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.start_high_impact_association_graph_container_with_http_info(id, graph_id, async_req=True)
+        >>> thread = api.start_high_impact_association_graph_container_with_http_info(id, graph_id, high_impact_associations_graph_context, async_req=True)
         >>> result = thread.get()
 
         :param id: The project identifier (required)
         :type id: int
         :param graph_id: The graph identifier (required)
         :type graph_id: str
-        :param high_impact_associations_graph_context: The request body
+        :param high_impact_associations_graph_context: The request body (required)
         :type high_impact_associations_graph_context: HighImpactAssociationsGraphContext
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -5033,6 +5077,10 @@ class DashboardsApi(object):
         if self.api_client.client_side_validation and ('graph_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['graph_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `graph_id` when calling `start_high_impact_association_graph_container`")  # noqa: E501
+        # verify the required parameter 'high_impact_associations_graph_context' is set
+        if self.api_client.client_side_validation and ('high_impact_associations_graph_context' not in local_var_params or  # noqa: E501
+                                                        local_var_params['high_impact_associations_graph_context'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `high_impact_associations_graph_context` when calling `start_high_impact_association_graph_container`")  # noqa: E501
 
         collection_formats = {}
 
@@ -5082,21 +5130,21 @@ class DashboardsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def start_high_impact_graph_data(self, id, graph_id, **kwargs):  # noqa: E501
+    def start_high_impact_graph_data(self, id, graph_id, high_impact_graph_context, **kwargs):  # noqa: E501
         """Start High Impact Topic Calculation  # noqa: E501
 
         Starts the process of generating High Impact Topics graph data  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.start_high_impact_graph_data(id, graph_id, async_req=True)
+        >>> thread = api.start_high_impact_graph_data(id, graph_id, high_impact_graph_context, async_req=True)
         >>> result = thread.get()
 
         :param id: The project identifier (required)
         :type id: int
         :param graph_id: The graph identifier (required)
         :type graph_id: str
-        :param high_impact_graph_context: The request body
+        :param high_impact_graph_context: The request body (required)
         :type high_impact_graph_context: HighImpactGraphContext
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -5114,23 +5162,23 @@ class DashboardsApi(object):
         :rtype: None
         """
         kwargs['_return_http_data_only'] = True
-        return self.start_high_impact_graph_data_with_http_info(id, graph_id, **kwargs)  # noqa: E501
+        return self.start_high_impact_graph_data_with_http_info(id, graph_id, high_impact_graph_context, **kwargs)  # noqa: E501
 
-    def start_high_impact_graph_data_with_http_info(self, id, graph_id, **kwargs):  # noqa: E501
+    def start_high_impact_graph_data_with_http_info(self, id, graph_id, high_impact_graph_context, **kwargs):  # noqa: E501
         """Start High Impact Topic Calculation  # noqa: E501
 
         Starts the process of generating High Impact Topics graph data  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.start_high_impact_graph_data_with_http_info(id, graph_id, async_req=True)
+        >>> thread = api.start_high_impact_graph_data_with_http_info(id, graph_id, high_impact_graph_context, async_req=True)
         >>> result = thread.get()
 
         :param id: The project identifier (required)
         :type id: int
         :param graph_id: The graph identifier (required)
         :type graph_id: str
-        :param high_impact_graph_context: The request body
+        :param high_impact_graph_context: The request body (required)
         :type high_impact_graph_context: HighImpactGraphContext
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -5188,6 +5236,10 @@ class DashboardsApi(object):
         if self.api_client.client_side_validation and ('graph_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['graph_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `graph_id` when calling `start_high_impact_graph_data`")  # noqa: E501
+        # verify the required parameter 'high_impact_graph_context' is set
+        if self.api_client.client_side_validation and ('high_impact_graph_context' not in local_var_params or  # noqa: E501
+                                                        local_var_params['high_impact_graph_context'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `high_impact_graph_context` when calling `start_high_impact_graph_data`")  # noqa: E501
 
         collection_formats = {}
 
@@ -5392,21 +5444,21 @@ class DashboardsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def start_timeseries_comparison_graph_data(self, id, graph_id, **kwargs):  # noqa: E501
+    def start_timeseries_comparison_graph_data(self, id, graph_id, timeseries_comparison_graph_context, **kwargs):  # noqa: E501
         """Start Time Series Comparison Calculation  # noqa: E501
 
         Starts the process of generating time series comparison graph data  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.start_timeseries_comparison_graph_data(id, graph_id, async_req=True)
+        >>> thread = api.start_timeseries_comparison_graph_data(id, graph_id, timeseries_comparison_graph_context, async_req=True)
         >>> result = thread.get()
 
         :param id: The project identifier (required)
         :type id: int
         :param graph_id: The graph identifier (required)
         :type graph_id: str
-        :param timeseries_comparison_graph_context: The the request
+        :param timeseries_comparison_graph_context: The the request (required)
         :type timeseries_comparison_graph_context: TimeseriesComparisonGraphContext
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -5424,23 +5476,23 @@ class DashboardsApi(object):
         :rtype: None
         """
         kwargs['_return_http_data_only'] = True
-        return self.start_timeseries_comparison_graph_data_with_http_info(id, graph_id, **kwargs)  # noqa: E501
+        return self.start_timeseries_comparison_graph_data_with_http_info(id, graph_id, timeseries_comparison_graph_context, **kwargs)  # noqa: E501
 
-    def start_timeseries_comparison_graph_data_with_http_info(self, id, graph_id, **kwargs):  # noqa: E501
+    def start_timeseries_comparison_graph_data_with_http_info(self, id, graph_id, timeseries_comparison_graph_context, **kwargs):  # noqa: E501
         """Start Time Series Comparison Calculation  # noqa: E501
 
         Starts the process of generating time series comparison graph data  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.start_timeseries_comparison_graph_data_with_http_info(id, graph_id, async_req=True)
+        >>> thread = api.start_timeseries_comparison_graph_data_with_http_info(id, graph_id, timeseries_comparison_graph_context, async_req=True)
         >>> result = thread.get()
 
         :param id: The project identifier (required)
         :type id: int
         :param graph_id: The graph identifier (required)
         :type graph_id: str
-        :param timeseries_comparison_graph_context: The the request
+        :param timeseries_comparison_graph_context: The the request (required)
         :type timeseries_comparison_graph_context: TimeseriesComparisonGraphContext
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -5498,6 +5550,10 @@ class DashboardsApi(object):
         if self.api_client.client_side_validation and ('graph_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['graph_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `graph_id` when calling `start_timeseries_comparison_graph_data`")  # noqa: E501
+        # verify the required parameter 'timeseries_comparison_graph_context' is set
+        if self.api_client.client_side_validation and ('timeseries_comparison_graph_context' not in local_var_params or  # noqa: E501
+                                                        local_var_params['timeseries_comparison_graph_context'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `timeseries_comparison_graph_context` when calling `start_timeseries_comparison_graph_data`")  # noqa: E501
 
         collection_formats = {}
 
@@ -6012,21 +6068,21 @@ class DashboardsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def update_topic_graph(self, id, graph_id, **kwargs):  # noqa: E501
+    def update_topic_graph(self, id, graph_id, topic_graph_create_request, **kwargs):  # noqa: E501
         """Update topic Graphs  # noqa: E501
 
         Modifies the topic graph  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_topic_graph(id, graph_id, async_req=True)
+        >>> thread = api.update_topic_graph(id, graph_id, topic_graph_create_request, async_req=True)
         >>> result = thread.get()
 
         :param id: The project identifier (required)
         :type id: int
         :param graph_id: The graph identifier (required)
         :type graph_id: str
-        :param topic_graph_create_request: The topic graph update request
+        :param topic_graph_create_request: The topic graph update request (required)
         :type topic_graph_create_request: TopicGraphCreateRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -6044,23 +6100,23 @@ class DashboardsApi(object):
         :rtype: TopicGraphInfo
         """
         kwargs['_return_http_data_only'] = True
-        return self.update_topic_graph_with_http_info(id, graph_id, **kwargs)  # noqa: E501
+        return self.update_topic_graph_with_http_info(id, graph_id, topic_graph_create_request, **kwargs)  # noqa: E501
 
-    def update_topic_graph_with_http_info(self, id, graph_id, **kwargs):  # noqa: E501
+    def update_topic_graph_with_http_info(self, id, graph_id, topic_graph_create_request, **kwargs):  # noqa: E501
         """Update topic Graphs  # noqa: E501
 
         Modifies the topic graph  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_topic_graph_with_http_info(id, graph_id, async_req=True)
+        >>> thread = api.update_topic_graph_with_http_info(id, graph_id, topic_graph_create_request, async_req=True)
         >>> result = thread.get()
 
         :param id: The project identifier (required)
         :type id: int
         :param graph_id: The graph identifier (required)
         :type graph_id: str
-        :param topic_graph_create_request: The topic graph update request
+        :param topic_graph_create_request: The topic graph update request (required)
         :type topic_graph_create_request: TopicGraphCreateRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -6118,6 +6174,10 @@ class DashboardsApi(object):
         if self.api_client.client_side_validation and ('graph_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['graph_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `graph_id` when calling `update_topic_graph`")  # noqa: E501
+        # verify the required parameter 'topic_graph_create_request' is set
+        if self.api_client.client_side_validation and ('topic_graph_create_request' not in local_var_params or  # noqa: E501
+                                                        local_var_params['topic_graph_create_request'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `topic_graph_create_request` when calling `update_topic_graph`")  # noqa: E501
 
         collection_formats = {}
 

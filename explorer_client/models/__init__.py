@@ -157,6 +157,7 @@ from explorer_client.models.tonality import Tonality
 from explorer_client.models.tonality_context import TonalityContext
 from explorer_client.models.tonality_customization import TonalityCustomization
 from explorer_client.models.tonality_customization_info import TonalityCustomizationInfo
+from explorer_client.models.tonality_customization_request import TonalityCustomizationRequest
 from explorer_client.models.tone_customization import ToneCustomization
 from explorer_client.models.tone_exclude_term import ToneExcludeTerm
 from explorer_client.models.topic import Topic

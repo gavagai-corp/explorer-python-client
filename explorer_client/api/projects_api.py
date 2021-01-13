@@ -481,7 +481,7 @@ class ProjectsApi(object):
 
         # Authentication setting
         auth_settings = ['basicAuth']  # noqa: E501
-        
+
         response_types_map = {
             200: "ProjectId",
         }
@@ -814,17 +814,17 @@ class ProjectsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def create_folder(self, **kwargs):  # noqa: E501
+    def create_folder(self, folder_request, **kwargs):  # noqa: E501
         """Create folder  # noqa: E501
 
         Creates a folder in user's account  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_folder(async_req=True)
+        >>> thread = api.create_folder(folder_request, async_req=True)
         >>> result = thread.get()
 
-        :param folder_request: The request
+        :param folder_request: The request (required)
         :type folder_request: FolderRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -842,19 +842,19 @@ class ProjectsApi(object):
         :rtype: FolderInformation
         """
         kwargs['_return_http_data_only'] = True
-        return self.create_folder_with_http_info(**kwargs)  # noqa: E501
+        return self.create_folder_with_http_info(folder_request, **kwargs)  # noqa: E501
 
-    def create_folder_with_http_info(self, **kwargs):  # noqa: E501
+    def create_folder_with_http_info(self, folder_request, **kwargs):  # noqa: E501
         """Create folder  # noqa: E501
 
         Creates a folder in user's account  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_folder_with_http_info(async_req=True)
+        >>> thread = api.create_folder_with_http_info(folder_request, async_req=True)
         >>> result = thread.get()
 
-        :param folder_request: The request
+        :param folder_request: The request (required)
         :type folder_request: FolderRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -902,6 +902,10 @@ class ProjectsApi(object):
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
+        # verify the required parameter 'folder_request' is set
+        if self.api_client.client_side_validation and ('folder_request' not in local_var_params or  # noqa: E501
+                                                        local_var_params['folder_request'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `folder_request` when calling `create_folder`")  # noqa: E501
 
         collection_formats = {}
 
@@ -949,19 +953,19 @@ class ProjectsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def create_report(self, id, **kwargs):  # noqa: E501
+    def create_report(self, id, type, **kwargs):  # noqa: E501
         """Create report  # noqa: E501
 
         Begins to generates a report of the current contents in the project. Note that although this is a POST request, the parameters are passed through the URL. To check the progress of the requested report, call a GET request on /projects/{id}/reports and refer to the corresponding report id.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_report(id, async_req=True)
+        >>> thread = api.create_report(id, type, async_req=True)
         >>> result = thread.get()
 
         :param id: The identifier for the project (required)
         :type id: int
-        :param type: The type of report to generate, for example 'EXCEL' or 'PDF'.
+        :param type: The type of report to generate, for example 'EXCEL' or 'PDF'. (required)
         :type type: str
         :param pole_id: The id of the pole or concept to filter texts by (if desired). Corresponds to target concept in the GUI.
         :type pole_id: int
@@ -989,21 +993,21 @@ class ProjectsApi(object):
         :rtype: ProjectReport
         """
         kwargs['_return_http_data_only'] = True
-        return self.create_report_with_http_info(id, **kwargs)  # noqa: E501
+        return self.create_report_with_http_info(id, type, **kwargs)  # noqa: E501
 
-    def create_report_with_http_info(self, id, **kwargs):  # noqa: E501
+    def create_report_with_http_info(self, id, type, **kwargs):  # noqa: E501
         """Create report  # noqa: E501
 
         Begins to generates a report of the current contents in the project. Note that although this is a POST request, the parameters are passed through the URL. To check the progress of the requested report, call a GET request on /projects/{id}/reports and refer to the corresponding report id.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_report_with_http_info(id, async_req=True)
+        >>> thread = api.create_report_with_http_info(id, type, async_req=True)
         >>> result = thread.get()
 
         :param id: The identifier for the project (required)
         :type id: int
-        :param type: The type of report to generate, for example 'EXCEL' or 'PDF'.
+        :param type: The type of report to generate, for example 'EXCEL' or 'PDF'. (required)
         :type type: str
         :param pole_id: The id of the pole or concept to filter texts by (if desired). Corresponds to target concept in the GUI.
         :type pole_id: int
@@ -1071,6 +1075,10 @@ class ProjectsApi(object):
         if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
                                                         local_var_params['id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `create_report`")  # noqa: E501
+        # verify the required parameter 'type' is set
+        if self.api_client.client_side_validation and ('type' not in local_var_params or  # noqa: E501
+                                                        local_var_params['type'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `type` when calling `create_report`")  # noqa: E501
 
         collection_formats = {}
 
@@ -1128,19 +1136,19 @@ class ProjectsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def create_stories(self, id, **kwargs):  # noqa: E501
+    def create_stories(self, id, stories_request, **kwargs):  # noqa: E501
         """Create Stories  # noqa: E501
 
         Creates stories for the given title and url column. The project needs to be explored before you can call this method. If you have created stories it will appear as a column in the report.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_stories(id, async_req=True)
+        >>> thread = api.create_stories(id, stories_request, async_req=True)
         >>> result = thread.get()
 
         :param id: The id of the project (required)
         :type id: int
-        :param stories_request: The request containing the required data for the stories generation
+        :param stories_request: The request containing the required data for the stories generation (required)
         :type stories_request: StoriesRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -1158,21 +1166,21 @@ class ProjectsApi(object):
         :rtype: None
         """
         kwargs['_return_http_data_only'] = True
-        return self.create_stories_with_http_info(id, **kwargs)  # noqa: E501
+        return self.create_stories_with_http_info(id, stories_request, **kwargs)  # noqa: E501
 
-    def create_stories_with_http_info(self, id, **kwargs):  # noqa: E501
+    def create_stories_with_http_info(self, id, stories_request, **kwargs):  # noqa: E501
         """Create Stories  # noqa: E501
 
         Creates stories for the given title and url column. The project needs to be explored before you can call this method. If you have created stories it will appear as a column in the report.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_stories_with_http_info(id, async_req=True)
+        >>> thread = api.create_stories_with_http_info(id, stories_request, async_req=True)
         >>> result = thread.get()
 
         :param id: The id of the project (required)
         :type id: int
-        :param stories_request: The request containing the required data for the stories generation
+        :param stories_request: The request containing the required data for the stories generation (required)
         :type stories_request: StoriesRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -1225,6 +1233,10 @@ class ProjectsApi(object):
         if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
                                                         local_var_params['id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `create_stories`")  # noqa: E501
+        # verify the required parameter 'stories_request' is set
+        if self.api_client.client_side_validation and ('stories_request' not in local_var_params or  # noqa: E501
+                                                        local_var_params['stories_request'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `stories_request` when calling `create_stories`")  # noqa: E501
 
         collection_formats = {}
 
@@ -1272,19 +1284,19 @@ class ProjectsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def explore_project(self, id, **kwargs):  # noqa: E501
+    def explore_project(self, id, project_exploration_context, **kwargs):  # noqa: E501
         """Explore project  # noqa: E501
 
         Starts an exploration of the project. This is only possible if the project has the  ProjectStatus.EXPLORABLE status. This call will return instantly after starting the explore process (with HTTP status 204  since there will be no content). You should supply a ProjectExplorationContext giving the specifics of the exploration. Use the same call but with GET to get a status for the explore process.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.explore_project(id, async_req=True)
+        >>> thread = api.explore_project(id, project_exploration_context, async_req=True)
         >>> result = thread.get()
 
         :param id: The id of the project to explore (required)
         :type id: int
-        :param project_exploration_context: The exploration context to use
+        :param project_exploration_context: The exploration context to use (required)
         :type project_exploration_context: ProjectExplorationContext
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -1302,21 +1314,21 @@ class ProjectsApi(object):
         :rtype: None
         """
         kwargs['_return_http_data_only'] = True
-        return self.explore_project_with_http_info(id, **kwargs)  # noqa: E501
+        return self.explore_project_with_http_info(id, project_exploration_context, **kwargs)  # noqa: E501
 
-    def explore_project_with_http_info(self, id, **kwargs):  # noqa: E501
+    def explore_project_with_http_info(self, id, project_exploration_context, **kwargs):  # noqa: E501
         """Explore project  # noqa: E501
 
         Starts an exploration of the project. This is only possible if the project has the  ProjectStatus.EXPLORABLE status. This call will return instantly after starting the explore process (with HTTP status 204  since there will be no content). You should supply a ProjectExplorationContext giving the specifics of the exploration. Use the same call but with GET to get a status for the explore process.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.explore_project_with_http_info(id, async_req=True)
+        >>> thread = api.explore_project_with_http_info(id, project_exploration_context, async_req=True)
         >>> result = thread.get()
 
         :param id: The id of the project to explore (required)
         :type id: int
-        :param project_exploration_context: The exploration context to use
+        :param project_exploration_context: The exploration context to use (required)
         :type project_exploration_context: ProjectExplorationContext
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -1369,6 +1381,10 @@ class ProjectsApi(object):
         if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
                                                         local_var_params['id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `explore_project`")  # noqa: E501
+        # verify the required parameter 'project_exploration_context' is set
+        if self.api_client.client_side_validation and ('project_exploration_context' not in local_var_params or  # noqa: E501
+                                                        local_var_params['project_exploration_context'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `project_exploration_context` when calling `explore_project`")  # noqa: E501
 
         collection_formats = {}
 
@@ -1416,19 +1432,19 @@ class ProjectsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def find_suggestions(self, id, **kwargs):  # noqa: E501
+    def find_suggestions(self, id, suggestions_request, **kwargs):  # noqa: E501
         """Get suggestions for terms  # noqa: E501
 
         Get suggestions for topics terms. This endpoint retrieves semantically similar words from the Gavagai Lexicon for each term in the request body. These words are filtered so that suggestions returned are only those that are present in the project text data. The response body contains much more detailed information than that which is presented in the GUI, such as a neighbourCounter (how many terms in the request a suggestion is relevant for) and whether the suggestion displays string similarity with any request term.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.find_suggestions(id, async_req=True)
+        >>> thread = api.find_suggestions(id, suggestions_request, async_req=True)
         >>> result = thread.get()
 
         :param id: The identifier of the project (required)
         :type id: int
-        :param suggestions_request: The request containing relevant terms
+        :param suggestions_request: The request containing relevant terms (required)
         :type suggestions_request: SuggestionsRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -1446,21 +1462,21 @@ class ProjectsApi(object):
         :rtype: SuggestionsResult
         """
         kwargs['_return_http_data_only'] = True
-        return self.find_suggestions_with_http_info(id, **kwargs)  # noqa: E501
+        return self.find_suggestions_with_http_info(id, suggestions_request, **kwargs)  # noqa: E501
 
-    def find_suggestions_with_http_info(self, id, **kwargs):  # noqa: E501
+    def find_suggestions_with_http_info(self, id, suggestions_request, **kwargs):  # noqa: E501
         """Get suggestions for terms  # noqa: E501
 
         Get suggestions for topics terms. This endpoint retrieves semantically similar words from the Gavagai Lexicon for each term in the request body. These words are filtered so that suggestions returned are only those that are present in the project text data. The response body contains much more detailed information than that which is presented in the GUI, such as a neighbourCounter (how many terms in the request a suggestion is relevant for) and whether the suggestion displays string similarity with any request term.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.find_suggestions_with_http_info(id, async_req=True)
+        >>> thread = api.find_suggestions_with_http_info(id, suggestions_request, async_req=True)
         >>> result = thread.get()
 
         :param id: The identifier of the project (required)
         :type id: int
-        :param suggestions_request: The request containing relevant terms
+        :param suggestions_request: The request containing relevant terms (required)
         :type suggestions_request: SuggestionsRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -1513,6 +1529,10 @@ class ProjectsApi(object):
         if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
                                                         local_var_params['id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `find_suggestions`")  # noqa: E501
+        # verify the required parameter 'suggestions_request' is set
+        if self.api_client.client_side_validation and ('suggestions_request' not in local_var_params or  # noqa: E501
+                                                        local_var_params['suggestions_request'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `suggestions_request` when calling `find_suggestions`")  # noqa: E501
 
         collection_formats = {}
 
@@ -2749,19 +2769,19 @@ class ProjectsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def get_matching_sentences_for_terms(self, id, **kwargs):  # noqa: E501
+    def get_matching_sentences_for_terms(self, id, terms, **kwargs):  # noqa: E501
         """Get sentences  # noqa: E501
 
         Get sentences matching any of the specified terms. The project must be explored prior to making this request  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_matching_sentences_for_terms(id, async_req=True)
+        >>> thread = api.get_matching_sentences_for_terms(id, terms, async_req=True)
         >>> result = thread.get()
 
         :param id: The id of the project (required)
         :type id: int
-        :param terms: The terms for which sentences must be retrieved
+        :param terms: The terms for which sentences must be retrieved (required)
         :type terms: list[str]
         :param max_sentences: The maximum number of sentences to include (maximum 20). The actual number will be equal or less to the number specified
         :type max_sentences: int
@@ -2781,21 +2801,21 @@ class ProjectsApi(object):
         :rtype: Sentences
         """
         kwargs['_return_http_data_only'] = True
-        return self.get_matching_sentences_for_terms_with_http_info(id, **kwargs)  # noqa: E501
+        return self.get_matching_sentences_for_terms_with_http_info(id, terms, **kwargs)  # noqa: E501
 
-    def get_matching_sentences_for_terms_with_http_info(self, id, **kwargs):  # noqa: E501
+    def get_matching_sentences_for_terms_with_http_info(self, id, terms, **kwargs):  # noqa: E501
         """Get sentences  # noqa: E501
 
         Get sentences matching any of the specified terms. The project must be explored prior to making this request  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_matching_sentences_for_terms_with_http_info(id, async_req=True)
+        >>> thread = api.get_matching_sentences_for_terms_with_http_info(id, terms, async_req=True)
         >>> result = thread.get()
 
         :param id: The id of the project (required)
         :type id: int
-        :param terms: The terms for which sentences must be retrieved
+        :param terms: The terms for which sentences must be retrieved (required)
         :type terms: list[str]
         :param max_sentences: The maximum number of sentences to include (maximum 20). The actual number will be equal or less to the number specified
         :type max_sentences: int
@@ -2851,6 +2871,10 @@ class ProjectsApi(object):
         if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
                                                         local_var_params['id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `get_matching_sentences_for_terms`")  # noqa: E501
+        # verify the required parameter 'terms' is set
+        if self.api_client.client_side_validation and ('terms' not in local_var_params or  # noqa: E501
+                                                        local_var_params['terms'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `terms` when calling `get_matching_sentences_for_terms`")  # noqa: E501
 
         collection_formats = {}
 
@@ -5479,19 +5503,19 @@ class ProjectsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def search_for_project_terms(self, id, **kwargs):  # noqa: E501
+    def search_for_project_terms(self, id, lookfor, **kwargs):  # noqa: E501
         """Search Project Terms  # noqa: E501
 
         Get all the terms in the project that begin with the provided string (corpus search)  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.search_for_project_terms(id, async_req=True)
+        >>> thread = api.search_for_project_terms(id, lookfor, async_req=True)
         >>> result = thread.get()
 
         :param id: The id of the project (required)
         :type id: int
-        :param lookfor: String to search for. Needs to be 2 characters or more
+        :param lookfor: String to search for. Needs to be 2 characters or more (required)
         :type lookfor: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -5509,21 +5533,21 @@ class ProjectsApi(object):
         :rtype: list[str]
         """
         kwargs['_return_http_data_only'] = True
-        return self.search_for_project_terms_with_http_info(id, **kwargs)  # noqa: E501
+        return self.search_for_project_terms_with_http_info(id, lookfor, **kwargs)  # noqa: E501
 
-    def search_for_project_terms_with_http_info(self, id, **kwargs):  # noqa: E501
+    def search_for_project_terms_with_http_info(self, id, lookfor, **kwargs):  # noqa: E501
         """Search Project Terms  # noqa: E501
 
         Get all the terms in the project that begin with the provided string (corpus search)  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.search_for_project_terms_with_http_info(id, async_req=True)
+        >>> thread = api.search_for_project_terms_with_http_info(id, lookfor, async_req=True)
         >>> result = thread.get()
 
         :param id: The id of the project (required)
         :type id: int
-        :param lookfor: String to search for. Needs to be 2 characters or more
+        :param lookfor: String to search for. Needs to be 2 characters or more (required)
         :type lookfor: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -5576,6 +5600,10 @@ class ProjectsApi(object):
         if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
                                                         local_var_params['id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `search_for_project_terms`")  # noqa: E501
+        # verify the required parameter 'lookfor' is set
+        if self.api_client.client_side_validation and ('lookfor' not in local_var_params or  # noqa: E501
+                                                        local_var_params['lookfor'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `lookfor` when calling `search_for_project_terms`")  # noqa: E501
 
         collection_formats = {}
 
@@ -5768,20 +5796,22 @@ class ProjectsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def start_group_tonalities(self, id, group_id, **kwargs):  # noqa: E501
+    def start_group_tonalities(self, id, group_id, tonalities_request_context, **kwargs):  # noqa: E501
         """Start tonality calculation  # noqa: E501
 
         Starts an asynchronous group tonalities calculation. A GET request to the same url will fetch the progress. <br/><br/> NOTE: The existing method of specifying terms and associations as query parameters has been deprecated. Please use the request body object TonalitiesRequestContext to specify these fields instead  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.start_group_tonalities(id, group_id, async_req=True)
+        >>> thread = api.start_group_tonalities(id, group_id, tonalities_request_context, async_req=True)
         >>> result = thread.get()
 
         :param id: The project identifier. (required)
         :type id: int
         :param group_id: The group identifier. (required)
         :type group_id: int
+        :param tonalities_request_context: The context of the tonalities request, specifically with regards to terms to include. If the context element provided in the request, the corresponding query parameters are ignored. (required)
+        :type tonalities_request_context: TonalitiesRequestContext
         :param terms: DEPRECATED - please use the request body object to specify terms instead. Specify the terms you are interested in getting details for. If left empty all group terms will be taken into account. One query parameter per term like this: ?terms=a_term&amp;terms=some_other_term&amp;...
         :type terms: list[str]
         :param associations: DEPRECATED - please use the request body object to specify associations instead. Optionally specify the associations you are interested in as well. Same format as for the terms: ?associations=association1&amp;associations=assoc2
@@ -5790,8 +5820,6 @@ class ProjectsApi(object):
         :type sort_by_tonality: str
         :param order_by: The order of the examples to return. Defaults to SENTIMENT_DESC.
         :type order_by: str
-        :param tonalities_request_context: The context of the tonalities request, specifically with regards to terms toinclude. If the context element provided in the request, the corresponding query parameters are ignored.
-        :type tonalities_request_context: TonalitiesRequestContext
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -5808,22 +5836,24 @@ class ProjectsApi(object):
         :rtype: None
         """
         kwargs['_return_http_data_only'] = True
-        return self.start_group_tonalities_with_http_info(id, group_id, **kwargs)  # noqa: E501
+        return self.start_group_tonalities_with_http_info(id, group_id, tonalities_request_context, **kwargs)  # noqa: E501
 
-    def start_group_tonalities_with_http_info(self, id, group_id, **kwargs):  # noqa: E501
+    def start_group_tonalities_with_http_info(self, id, group_id, tonalities_request_context, **kwargs):  # noqa: E501
         """Start tonality calculation  # noqa: E501
 
         Starts an asynchronous group tonalities calculation. A GET request to the same url will fetch the progress. <br/><br/> NOTE: The existing method of specifying terms and associations as query parameters has been deprecated. Please use the request body object TonalitiesRequestContext to specify these fields instead  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.start_group_tonalities_with_http_info(id, group_id, async_req=True)
+        >>> thread = api.start_group_tonalities_with_http_info(id, group_id, tonalities_request_context, async_req=True)
         >>> result = thread.get()
 
         :param id: The project identifier. (required)
         :type id: int
         :param group_id: The group identifier. (required)
         :type group_id: int
+        :param tonalities_request_context: The context of the tonalities request, specifically with regards to terms to include. If the context element provided in the request, the corresponding query parameters are ignored. (required)
+        :type tonalities_request_context: TonalitiesRequestContext
         :param terms: DEPRECATED - please use the request body object to specify terms instead. Specify the terms you are interested in getting details for. If left empty all group terms will be taken into account. One query parameter per term like this: ?terms=a_term&amp;terms=some_other_term&amp;...
         :type terms: list[str]
         :param associations: DEPRECATED - please use the request body object to specify associations instead. Optionally specify the associations you are interested in as well. Same format as for the terms: ?associations=association1&amp;associations=assoc2
@@ -5832,8 +5862,6 @@ class ProjectsApi(object):
         :type sort_by_tonality: str
         :param order_by: The order of the examples to return. Defaults to SENTIMENT_DESC.
         :type order_by: str
-        :param tonalities_request_context: The context of the tonalities request, specifically with regards to terms toinclude. If the context element provided in the request, the corresponding query parameters are ignored.
-        :type tonalities_request_context: TonalitiesRequestContext
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -5862,11 +5890,11 @@ class ProjectsApi(object):
         all_params = [
             'id',
             'group_id',
+            'tonalities_request_context',
             'terms',
             'associations',
             'sort_by_tonality',
-            'order_by',
-            'tonalities_request_context'
+            'order_by'
         ]
         all_params.extend(
             [
@@ -5894,6 +5922,10 @@ class ProjectsApi(object):
         if self.api_client.client_side_validation and ('group_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['group_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `group_id` when calling `start_group_tonalities`")  # noqa: E501
+        # verify the required parameter 'tonalities_request_context' is set
+        if self.api_client.client_side_validation and ('tonalities_request_context' not in local_var_params or  # noqa: E501
+                                                        local_var_params['tonalities_request_context'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `tonalities_request_context` when calling `start_group_tonalities`")  # noqa: E501
 
         collection_formats = {}
 
@@ -6100,14 +6132,14 @@ class ProjectsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def start_topic_tonalities(self, id, group_id, topic_id, **kwargs):  # noqa: E501
+    def start_topic_tonalities(self, id, group_id, topic_id, tonalities_request_context, **kwargs):  # noqa: E501
         """Start tonality calculation  # noqa: E501
 
         Starts an asynchronous topic tonalities calculation. A GET request to the same url will fetchthe progress. <br/><br/>NOTE: The existing method of specifying terms and associations as query parameters has beendeprecated. Please use the request body object TonalitiesRequestContext tospecify these fields instead  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.start_topic_tonalities(id, group_id, topic_id, async_req=True)
+        >>> thread = api.start_topic_tonalities(id, group_id, topic_id, tonalities_request_context, async_req=True)
         >>> result = thread.get()
 
         :param id: The project identifier. (required)
@@ -6116,6 +6148,8 @@ class ProjectsApi(object):
         :type group_id: int
         :param topic_id: The topic identifier. The topic must belong to the group identified by the groupId parameter (required)
         :type topic_id: int
+        :param tonalities_request_context: The context of the tonalities request, specifically with regards to terms to include. If the context element provided in the request, the corresponding query parameters are ignored. (required)
+        :type tonalities_request_context: TonalitiesRequestContext
         :param terms: DEPRECATED - please use the request body object to specify terms instead. Specify the terms you are interested in getting details for. If left empty all group terms will be taken into account One query paramter per term like this:?terms=a_term&amp;terms=some_other_term&amp;...
         :type terms: list[str]
         :param associations: DEPRECATED - please use the request body object to specify associations instead. Optionally specify the associations you are interested in as well. Same format as for the terms: ?associations=association1&amp;associations=assoc2
@@ -6124,8 +6158,6 @@ class ProjectsApi(object):
         :type sort_by_tonality: str
         :param order_by: The order of the examples to return. Defaults to SENTIMENT_DESC.
         :type order_by: str
-        :param tonalities_request_context: The context of the tonalities request, specifically with regards to terms to include. If the context element provided in the request, the corresponding query parameters are ignored.
-        :type tonalities_request_context: TonalitiesRequestContext
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -6142,16 +6174,16 @@ class ProjectsApi(object):
         :rtype: None
         """
         kwargs['_return_http_data_only'] = True
-        return self.start_topic_tonalities_with_http_info(id, group_id, topic_id, **kwargs)  # noqa: E501
+        return self.start_topic_tonalities_with_http_info(id, group_id, topic_id, tonalities_request_context, **kwargs)  # noqa: E501
 
-    def start_topic_tonalities_with_http_info(self, id, group_id, topic_id, **kwargs):  # noqa: E501
+    def start_topic_tonalities_with_http_info(self, id, group_id, topic_id, tonalities_request_context, **kwargs):  # noqa: E501
         """Start tonality calculation  # noqa: E501
 
         Starts an asynchronous topic tonalities calculation. A GET request to the same url will fetchthe progress. <br/><br/>NOTE: The existing method of specifying terms and associations as query parameters has beendeprecated. Please use the request body object TonalitiesRequestContext tospecify these fields instead  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.start_topic_tonalities_with_http_info(id, group_id, topic_id, async_req=True)
+        >>> thread = api.start_topic_tonalities_with_http_info(id, group_id, topic_id, tonalities_request_context, async_req=True)
         >>> result = thread.get()
 
         :param id: The project identifier. (required)
@@ -6160,6 +6192,8 @@ class ProjectsApi(object):
         :type group_id: int
         :param topic_id: The topic identifier. The topic must belong to the group identified by the groupId parameter (required)
         :type topic_id: int
+        :param tonalities_request_context: The context of the tonalities request, specifically with regards to terms to include. If the context element provided in the request, the corresponding query parameters are ignored. (required)
+        :type tonalities_request_context: TonalitiesRequestContext
         :param terms: DEPRECATED - please use the request body object to specify terms instead. Specify the terms you are interested in getting details for. If left empty all group terms will be taken into account One query paramter per term like this:?terms=a_term&amp;terms=some_other_term&amp;...
         :type terms: list[str]
         :param associations: DEPRECATED - please use the request body object to specify associations instead. Optionally specify the associations you are interested in as well. Same format as for the terms: ?associations=association1&amp;associations=assoc2
@@ -6168,8 +6202,6 @@ class ProjectsApi(object):
         :type sort_by_tonality: str
         :param order_by: The order of the examples to return. Defaults to SENTIMENT_DESC.
         :type order_by: str
-        :param tonalities_request_context: The context of the tonalities request, specifically with regards to terms to include. If the context element provided in the request, the corresponding query parameters are ignored.
-        :type tonalities_request_context: TonalitiesRequestContext
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -6199,11 +6231,11 @@ class ProjectsApi(object):
             'id',
             'group_id',
             'topic_id',
+            'tonalities_request_context',
             'terms',
             'associations',
             'sort_by_tonality',
-            'order_by',
-            'tonalities_request_context'
+            'order_by'
         ]
         all_params.extend(
             [
@@ -6235,6 +6267,10 @@ class ProjectsApi(object):
         if self.api_client.client_side_validation and ('topic_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['topic_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `topic_id` when calling `start_topic_tonalities`")  # noqa: E501
+        # verify the required parameter 'tonalities_request_context' is set
+        if self.api_client.client_side_validation and ('tonalities_request_context' not in local_var_params or  # noqa: E501
+                                                        local_var_params['tonalities_request_context'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `tonalities_request_context` when calling `start_topic_tonalities`")  # noqa: E501
 
         collection_formats = {}
 
@@ -6296,19 +6332,19 @@ class ProjectsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def update_folder(self, folder_id, **kwargs):  # noqa: E501
+    def update_folder(self, folder_id, folder_request, **kwargs):  # noqa: E501
         """Update folder  # noqa: E501
 
         Updates the folder meta-information, such as the name.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_folder(folder_id, async_req=True)
+        >>> thread = api.update_folder(folder_id, folder_request, async_req=True)
         >>> result = thread.get()
 
         :param folder_id: The id of the folder (required)
         :type folder_id: int
-        :param folder_request:
+        :param folder_request: The folder update request (required)
         :type folder_request: FolderRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -6326,21 +6362,21 @@ class ProjectsApi(object):
         :rtype: FolderInformation
         """
         kwargs['_return_http_data_only'] = True
-        return self.update_folder_with_http_info(folder_id, **kwargs)  # noqa: E501
+        return self.update_folder_with_http_info(folder_id, folder_request, **kwargs)  # noqa: E501
 
-    def update_folder_with_http_info(self, folder_id, **kwargs):  # noqa: E501
+    def update_folder_with_http_info(self, folder_id, folder_request, **kwargs):  # noqa: E501
         """Update folder  # noqa: E501
 
         Updates the folder meta-information, such as the name.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_folder_with_http_info(folder_id, async_req=True)
+        >>> thread = api.update_folder_with_http_info(folder_id, folder_request, async_req=True)
         >>> result = thread.get()
 
         :param folder_id: The id of the folder (required)
         :type folder_id: int
-        :param folder_request:
+        :param folder_request: The folder update request (required)
         :type folder_request: FolderRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -6393,6 +6429,10 @@ class ProjectsApi(object):
         if self.api_client.client_side_validation and ('folder_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['folder_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `folder_id` when calling `update_folder`")  # noqa: E501
+        # verify the required parameter 'folder_request' is set
+        if self.api_client.client_side_validation and ('folder_request' not in local_var_params or  # noqa: E501
+                                                        local_var_params['folder_request'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `folder_request` when calling `update_folder`")  # noqa: E501
 
         collection_formats = {}
 
@@ -6442,19 +6482,19 @@ class ProjectsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def update_project(self, id, **kwargs):  # noqa: E501
+    def update_project(self, id, project_request, **kwargs):  # noqa: E501
         """Update project  # noqa: E501
 
         Updates the project name, the project specific settings or connect the project to a model. To see the possible values for project settings, along with an explanation for each field, call a GET request on this same endpoint. <br/><br/>Note that the model identified by the modelId field must be a dynamic model, in which case the project will be dependent on the model.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_project(id, async_req=True)
+        >>> thread = api.update_project(id, project_request, async_req=True)
         >>> result = thread.get()
 
         :param id: The identifier of the project (required)
         :type id: int
-        :param project_request: The information with which to update the project
+        :param project_request: The information with which to update the project (required)
         :type project_request: ProjectRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -6472,21 +6512,21 @@ class ProjectsApi(object):
         :rtype: Project
         """
         kwargs['_return_http_data_only'] = True
-        return self.update_project_with_http_info(id, **kwargs)  # noqa: E501
+        return self.update_project_with_http_info(id, project_request, **kwargs)  # noqa: E501
 
-    def update_project_with_http_info(self, id, **kwargs):  # noqa: E501
+    def update_project_with_http_info(self, id, project_request, **kwargs):  # noqa: E501
         """Update project  # noqa: E501
 
         Updates the project name, the project specific settings or connect the project to a model. To see the possible values for project settings, along with an explanation for each field, call a GET request on this same endpoint. <br/><br/>Note that the model identified by the modelId field must be a dynamic model, in which case the project will be dependent on the model.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_project_with_http_info(id, async_req=True)
+        >>> thread = api.update_project_with_http_info(id, project_request, async_req=True)
         >>> result = thread.get()
 
         :param id: The identifier of the project (required)
         :type id: int
-        :param project_request: The information with which to update the project
+        :param project_request: The information with which to update the project (required)
         :type project_request: ProjectRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -6539,6 +6579,10 @@ class ProjectsApi(object):
         if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
                                                         local_var_params['id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `update_project`")  # noqa: E501
+        # verify the required parameter 'project_request' is set
+        if self.api_client.client_side_validation and ('project_request' not in local_var_params or  # noqa: E501
+                                                        local_var_params['project_request'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `project_request` when calling `update_project`")  # noqa: E501
 
         collection_formats = {}
 
@@ -6588,19 +6632,19 @@ class ProjectsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def update_project_model(self, id, **kwargs):  # noqa: E501
+    def update_project_model(self, id, model_input, **kwargs):  # noqa: E501
         """Update Project Model  # noqa: E501
 
         Updates the model to which a project is connected. If the dynamic model was created from the project, all dependent projects will receive the corresponding update. Alternatively, if the model was applied to the project, only that version of the model will be impacted. Note that the only possible update in this scenario is an update of translations.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_project_model(id, async_req=True)
+        >>> thread = api.update_project_model(id, model_input, async_req=True)
         >>> result = thread.get()
 
         :param id: The id of the project (required)
         :type id: int
-        :param model_input: The information with which to update the project.
+        :param model_input: The information with which to update the project. (required)
         :type model_input: ModelInput
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -6618,21 +6662,21 @@ class ProjectsApi(object):
         :rtype: Model
         """
         kwargs['_return_http_data_only'] = True
-        return self.update_project_model_with_http_info(id, **kwargs)  # noqa: E501
+        return self.update_project_model_with_http_info(id, model_input, **kwargs)  # noqa: E501
 
-    def update_project_model_with_http_info(self, id, **kwargs):  # noqa: E501
+    def update_project_model_with_http_info(self, id, model_input, **kwargs):  # noqa: E501
         """Update Project Model  # noqa: E501
 
         Updates the model to which a project is connected. If the dynamic model was created from the project, all dependent projects will receive the corresponding update. Alternatively, if the model was applied to the project, only that version of the model will be impacted. Note that the only possible update in this scenario is an update of translations.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_project_model_with_http_info(id, async_req=True)
+        >>> thread = api.update_project_model_with_http_info(id, model_input, async_req=True)
         >>> result = thread.get()
 
         :param id: The id of the project (required)
         :type id: int
-        :param model_input: The information with which to update the project.
+        :param model_input: The information with which to update the project. (required)
         :type model_input: ModelInput
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -6685,6 +6729,10 @@ class ProjectsApi(object):
         if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
                                                         local_var_params['id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `update_project_model`")  # noqa: E501
+        # verify the required parameter 'model_input' is set
+        if self.api_client.client_side_validation and ('model_input' not in local_var_params or  # noqa: E501
+                                                        local_var_params['model_input'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `model_input` when calling `update_project_model`")  # noqa: E501
 
         collection_formats = {}
 
@@ -7080,14 +7128,14 @@ class ProjectsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.validate_filter_date_format(project_id, column_header_id, async_req=True)
+        >>> thread = api.validate_filter_date_format(project_id, column_header_id, value_format, async_req=True)
         >>> result = thread.get()
 
         :param project_id: The id of the project (required)
         :type project_id: int
         :param column_header_id: The id of the column with date information to be validated (required)
         :type column_header_id: int
-        :param value_format: The valueFormat Example: To map column data in the format '2018-06-18 11:33:23' you need a valueFormat like '%Y-%m-%d %T'
+        :param value_format: The valueFormat Example: To map column data in the format '2018-06-18 11:33:23' you need a valueFormat like '%Y-%m-%d %T' (required)
         :type value_format: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -7105,23 +7153,23 @@ class ProjectsApi(object):
         :rtype: FilterValidation
         """
         kwargs['_return_http_data_only'] = True
-        return self.validate_filter_date_format_with_http_info(project_id, column_header_id, **kwargs)  # noqa: E501
+        return self.validate_filter_date_format_with_http_info(project_id, column_header_id, value_format, **kwargs)  # noqa: E501
 
-    def validate_filter_date_format_with_http_info(self, project_id, column_header_id, **kwargs):  # noqa: E501
+    def validate_filter_date_format_with_http_info(self, project_id, column_header_id, value_format, **kwargs):  # noqa: E501
         """Validate your data filter format  # noqa: E501
 
         In Explorer there is the possibility to filter your documents using meta-information. When filtering by date, it is important that the system correctly parses the date information column. This is done according to a provided value format for the input info. This API call can be used to validate the value format provided, to check the system will correctly interpret the date format in your file. Reference: <a href=\"https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html#function_str-to-date\">https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html#function_str-to-date</a>  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.validate_filter_date_format_with_http_info(project_id, column_header_id, async_req=True)
+        >>> thread = api.validate_filter_date_format_with_http_info(project_id, column_header_id, value_format, async_req=True)
         >>> result = thread.get()
 
         :param project_id: The id of the project (required)
         :type project_id: int
         :param column_header_id: The id of the column with date information to be validated (required)
         :type column_header_id: int
-        :param value_format: The valueFormat Example: To map column data in the format '2018-06-18 11:33:23' you need a valueFormat like '%Y-%m-%d %T'
+        :param value_format: The valueFormat Example: To map column data in the format '2018-06-18 11:33:23' you need a valueFormat like '%Y-%m-%d %T' (required)
         :type value_format: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -7179,6 +7227,10 @@ class ProjectsApi(object):
         if self.api_client.client_side_validation and ('column_header_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['column_header_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `column_header_id` when calling `validate_filter_date_format`")  # noqa: E501
+        # verify the required parameter 'value_format' is set
+        if self.api_client.client_side_validation and ('value_format' not in local_var_params or  # noqa: E501
+                                                        local_var_params['value_format'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `value_format` when calling `validate_filter_date_format`")  # noqa: E501
 
         collection_formats = {}
 

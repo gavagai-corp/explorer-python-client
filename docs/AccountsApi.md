@@ -1158,7 +1158,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **purchase_credits**
-> CreditPurchaseResponse purchase_credits(credit_purchase=credit_purchase)
+> CreditPurchaseResponse purchase_credits(credit_purchase)
 
 Purchase Credits
 
@@ -1194,11 +1194,11 @@ configuration = explorer_client.Configuration(
 with explorer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = explorer_client.AccountsApi(api_client)
-    credit_purchase = explorer_client.CreditPurchase() # CreditPurchase | The purchase request for credits, specifying the number of credits to purchase (optional)
+    credit_purchase = explorer_client.CreditPurchase() # CreditPurchase | The purchase request for credits, specifying the number of credits to purchase
 
     try:
         # Purchase Credits
-        api_response = api_instance.purchase_credits(credit_purchase=credit_purchase)
+        api_response = api_instance.purchase_credits(credit_purchase)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling AccountsApi->purchase_credits: %s\n" % e)
@@ -1208,7 +1208,7 @@ with explorer_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credit_purchase** | [**CreditPurchase**](CreditPurchase.md)| The purchase request for credits, specifying the number of credits to purchase | [optional] 
+ **credit_purchase** | [**CreditPurchase**](CreditPurchase.md)| The purchase request for credits, specifying the number of credits to purchase | 
 
 ### Return type
 
@@ -1231,7 +1231,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reactivate_account**
-> AccountReactivationResponse reactivate_account(account_reactivation_request=account_reactivation_request)
+> AccountReactivationResponse reactivate_account(account_reactivation_request)
 
 Reactivate Account
 
@@ -1267,11 +1267,11 @@ configuration = explorer_client.Configuration(
 with explorer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = explorer_client.AccountsApi(api_client)
-    account_reactivation_request = explorer_client.AccountReactivationRequest() # AccountReactivationRequest | The reactivation request specifying which product plan the user would like to select (optional)
+    account_reactivation_request = explorer_client.AccountReactivationRequest() # AccountReactivationRequest | The reactivation request specifying which product plan the user would like to select
 
     try:
         # Reactivate Account
-        api_response = api_instance.reactivate_account(account_reactivation_request=account_reactivation_request)
+        api_response = api_instance.reactivate_account(account_reactivation_request)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling AccountsApi->reactivate_account: %s\n" % e)
@@ -1281,7 +1281,7 @@ with explorer_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **account_reactivation_request** | [**AccountReactivationRequest**](AccountReactivationRequest.md)| The reactivation request specifying which product plan the user would like to select | [optional] 
+ **account_reactivation_request** | [**AccountReactivationRequest**](AccountReactivationRequest.md)| The reactivation request specifying which product plan the user would like to select | 
 
 ### Return type
 
@@ -1376,7 +1376,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **set_product_plan**
-> ProductChangeResponse set_product_plan(product_plan_update=product_plan_update)
+> ProductChangeResponse set_product_plan(product_plan_update)
 
 Set Product Plan
 
@@ -1412,11 +1412,11 @@ configuration = explorer_client.Configuration(
 with explorer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = explorer_client.AccountsApi(api_client)
-    product_plan_update = explorer_client.ProductPlanUpdate() # ProductPlanUpdate | The new product plan handle (optional)
+    product_plan_update = explorer_client.ProductPlanUpdate() # ProductPlanUpdate | The new product plan handle
 
     try:
         # Set Product Plan
-        api_response = api_instance.set_product_plan(product_plan_update=product_plan_update)
+        api_response = api_instance.set_product_plan(product_plan_update)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling AccountsApi->set_product_plan: %s\n" % e)
@@ -1426,7 +1426,7 @@ with explorer_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **product_plan_update** | [**ProductPlanUpdate**](ProductPlanUpdate.md)| The new product plan handle | [optional] 
+ **product_plan_update** | [**ProductPlanUpdate**](ProductPlanUpdate.md)| The new product plan handle | 
 
 ### Return type
 
@@ -1449,7 +1449,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_user_settings**
-> list[UserSetting] update_user_settings(user_setting=user_setting)
+> list[UserSetting] update_user_settings(user_setting)
 
 Update User Settings
 
@@ -1485,11 +1485,11 @@ configuration = explorer_client.Configuration(
 with explorer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = explorer_client.AccountsApi(api_client)
-    user_setting = [explorer_client.UserSetting()] # list[UserSetting] | The settings (optional)
+    user_setting = [explorer_client.UserSetting()] # list[UserSetting] | The settings
 
     try:
         # Update User Settings
-        api_response = api_instance.update_user_settings(user_setting=user_setting)
+        api_response = api_instance.update_user_settings(user_setting)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling AccountsApi->update_user_settings: %s\n" % e)
@@ -1499,7 +1499,7 @@ with explorer_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_setting** | [**list[UserSetting]**](UserSetting.md)| The settings | [optional] 
+ **user_setting** | [**list[UserSetting]**](UserSetting.md)| The settings | 
 
 ### Return type
 
