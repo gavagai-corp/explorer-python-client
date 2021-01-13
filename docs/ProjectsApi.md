@@ -1801,7 +1801,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_project_report**
-> get_project_report(id, report_id)
+> file get_project_report(id, report_id)
 
 Retrieve report
 
@@ -1842,7 +1842,8 @@ report_id = 56 # int |
 
     try:
         # Retrieve report
-        api_instance.get_project_report(id, report_id)
+        api_response = api_instance.get_project_report(id, report_id)
+        pprint(api_response)
     except ApiException as e:
         print("Exception when calling ProjectsApi->get_project_report: %s\n" % e)
 ```
@@ -1856,7 +1857,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**file**
 
 ### Authorization
 
@@ -1870,7 +1871,7 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | default response |  -  |
+**200** | The project file |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

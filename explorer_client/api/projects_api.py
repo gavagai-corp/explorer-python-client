@@ -3476,7 +3476,7 @@ class ProjectsApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: file
         """
         kwargs['_return_http_data_only'] = True
         return self.get_project_report_with_http_info(id, report_id, **kwargs)  # noqa: E501
@@ -3515,7 +3515,7 @@ class ProjectsApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: tuple(file, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -3575,7 +3575,7 @@ class ProjectsApi(object):
         auth_settings = ['basicAuth']  # noqa: E501
         
         response_types_map = {
-            200: "file"
+            200: "file",
         }
 
         return self.api_client.call_api(
