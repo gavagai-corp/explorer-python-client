@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **history** | [**list[HistoryLog]**](HistoryLog.md) |  | [optional] 
 **settings** | [**list[ProjectSetting]**](ProjectSetting.md) |  | [optional] 
 **model** | [**ModelInfo**](ModelInfo.md) |  | [optional] 
+**subscribed_model_version** | [**ModelVersion**](ModelVersion.md) |  | [optional] 
 **created_by** | [**User**](User.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -8,6 +8,8 @@ Method | HTTP request | Description
 [**add_project_to_folder**](ProjectsApi.md#add_project_to_folder) | **PUT** /projects/folders/{id}/projects/{projectId} | Add project to folder
 [**append_to_project**](ProjectsApi.md#append_to_project) | **POST** /projects/{id}/append | Add data to project
 [**append_file_to_project**](ProjectsApi.md#append_file_to_project) | **POST** /projects/{id}/append | Add data to project
+[**apply_model**](ProjectsApi.md#apply_model) | **PUT** /projects/{id}/apply | Apply model to project
+[**compare_project_versions**](ProjectsApi.md#compare_project_versions) | **GET** /projects/{id}/versions/{version}/compare/{comparingVersion} | Compare project versions
 [**create_batch**](ProjectsApi.md#create_batch) | **POST** /projects/{id}/batches | Start Batch Calculation
 [**create_folder**](ProjectsApi.md#create_folder) | **POST** /projects/folders | Create folder
 [**create_report**](ProjectsApi.md#create_report) | **POST** /projects/{id}/reports | Create report
@@ -22,18 +24,21 @@ Method | HTTP request | Description
 [**get_folder**](ProjectsApi.md#get_folder) | **GET** /projects/folders/{id} | Get folder
 [**get_folders**](ProjectsApi.md#get_folders) | **GET** /projects/folders | Get folders
 [**get_group_tonalities**](ProjectsApi.md#get_group_tonalities) | **GET** /projects/{id}/explore/groups/{groupId}/tonalities | Get tonality response
+[**get_headers**](ProjectsApi.md#get_headers) | **GET** /projects/{id}/headers | Get project headers
 [**get_matching_sentences_for_terms**](ProjectsApi.md#get_matching_sentences_for_terms) | **GET** /projects/{id}/sentences | Get sentences
 [**get_project**](ProjectsApi.md#get_project) | **GET** /projects/{id} | Get project
 [**get_project_document_tonalities**](ProjectsApi.md#get_project_document_tonalities) | **GET** /projects/{id}/explore/projectTonalities/tonalities | Get Document Tonalities
-[**get_project_languages**](ProjectsApi.md#get_project_languages) | **GET** /projects/languages | Get all supported languages
-[**get_project_languages1**](ProjectsApi.md#get_project_languages1) | **GET** /projects/{id}/languages | Get project languages
+[**get_project_languages**](ProjectsApi.md#get_project_languages) | **GET** /projects/{id}/languages | Get project languages
 [**get_project_report**](ProjectsApi.md#get_project_report) | **GET** /projects/{id}/reports/{reportId} | Retrieve report
 [**get_project_reports**](ProjectsApi.md#get_project_reports) | **GET** /projects/{id}/reports | Get reports
 [**get_projects**](ProjectsApi.md#get_projects) | **GET** /projects | Get all projects
 [**get_sample_texts**](ProjectsApi.md#get_sample_texts) | **GET** /projects/{projectId}/headers/{columnHeaderId}/samples | Get sample texts
 [**get_stories**](ProjectsApi.md#get_stories) | **GET** /projects/{id}/stories | Get Stories
+[**get_supported_languages**](ProjectsApi.md#get_supported_languages) | **GET** /projects/languages | Get all supported languages
 [**get_term_details**](ProjectsApi.md#get_term_details) | **GET** /projects/{id}/details | Get topic details
 [**get_topic_tonalities**](ProjectsApi.md#get_topic_tonalities) | **GET** /projects/{id}/explore/groups/{groupId}/topics/{topicId}/tonalities | Get tonality response
+[**get_versions**](ProjectsApi.md#get_versions) | **GET** /projects/{id}/versions | Get project versions
+[**publish_version**](ProjectsApi.md#publish_version) | **PUT** /projects/{id}/versions/{version}/publish | Publish project version to model
 [**remove_folder**](ProjectsApi.md#remove_folder) | **DELETE** /projects/folders/{id} | Remove folder
 [**remove_folder_from_folder**](ProjectsApi.md#remove_folder_from_folder) | **DELETE** /projects/folders/{id}/folders/{subFolderId} | Remove sub folder from folder
 [**remove_history**](ProjectsApi.md#remove_history) | **DELETE** /projects/{id}/history/{historyId} | Remove history log
@@ -41,14 +46,18 @@ Method | HTTP request | Description
 [**remove_project**](ProjectsApi.md#remove_project) | **DELETE** /projects/{id} | Remove project
 [**remove_project_from_folder**](ProjectsApi.md#remove_project_from_folder) | **DELETE** /projects/folders/{id}/projects/{projectId} | Remove project from folder
 [**remove_report**](ProjectsApi.md#remove_report) | **DELETE** /projects/{id}/reports/{reportId} | Remove report
+[**revert_to_version**](ProjectsApi.md#revert_to_version) | **PUT** /projects/{id}/versions/{version}/revert | Revert to version
 [**search_for_project_terms**](ProjectsApi.md#search_for_project_terms) | **GET** /projects/{id}/result/searchTerms | Search Project Terms
 [**start_coverage_tonalities**](ProjectsApi.md#start_coverage_tonalities) | **POST** /projects/{id}/explore/coverageStatistics/tonalities | Start Coverage Tonalities Calculation
 [**start_group_tonalities**](ProjectsApi.md#start_group_tonalities) | **POST** /projects/{id}/explore/groups/{groupId}/tonalities | Start tonality calculation
 [**start_project_document_tonalities**](ProjectsApi.md#start_project_document_tonalities) | **POST** /projects/{id}/explore/projectTonalities/tonalities | Start Document Tonalities
 [**start_topic_tonalities**](ProjectsApi.md#start_topic_tonalities) | **POST** /projects/{id}/explore/groups/{groupId}/topics/{topicId}/tonalities | Start tonality calculation
+[**stop_subscribing_to_updates**](ProjectsApi.md#stop_subscribing_to_updates) | **DELETE** /projects/{id}/subscription | Stop subscribing to updates from a model
 [**update_folder**](ProjectsApi.md#update_folder) | **PUT** /projects/folders/{folderId} | Update folder
+[**update_header**](ProjectsApi.md#update_header) | **PUT** /projects/{id}/headers/{headerId} | Update project header
 [**update_project**](ProjectsApi.md#update_project) | **PUT** /projects/{id} | Update project
 [**update_project_model**](ProjectsApi.md#update_project_model) | **PUT** /projects/{id}/model | Update Project Model
+[**update_version**](ProjectsApi.md#update_version) | **PUT** /projects/{id}/versions/{version} | Update version
 [**upload_project**](ProjectsApi.md#upload_project) | **POST** /projects | Create project
 [**upload_project_file**](ProjectsApi.md#upload_project_file) | **POST** /projects | Create project
 [**validate_filter_date_format**](ProjectsApi.md#validate_filter_date_format) | **GET** /projects/{projectId}/headers/{columnHeaderId}/validateFilterFormat | Validate your data filter format
@@ -363,8 +372,160 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+
+# **apply_model**
+> apply_model(id, apply_model_request)
+
+Apply model to project
+
+Apply a model to project. The model has to be created by the logged in user or share with the logged in user. If the model is applied to a project with different language the system will automatically translate the model.
+
+### Example
+
+* Basic Authentication (basicAuth):
+```python
+from __future__ import print_function
+import time
+import explorer_client
+from explorer_client.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.gavagai.se/explorer/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = explorer_client.Configuration(
+    host = "https://api.gavagai.se/explorer/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = explorer_client.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Enter a context with an instance of the API client
+with explorer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = explorer_client.ProjectsApi(api_client)
+    id = 56 # int | The id of the project
+apply_model_request = explorer_client.ApplyModelRequest() # ApplyModelRequest | The request body
+
+    try:
+        # Apply model to project
+        api_instance.apply_model(id, apply_model_request)
+    except ApiException as e:
+        print("Exception when calling ProjectsApi->apply_model: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The id of the project | 
+ **apply_model_request** | [**ApplyModelRequest**](ApplyModelRequest.md)| The request body | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **compare_project_versions**
+> ProjectVersionsChangeSet compare_project_versions(id, version, comparing_version)
+
+Compare project versions
+
+Get the comparison between 2 project versions
+
+### Example
+
+* Basic Authentication (basicAuth):
+```python
+from __future__ import print_function
+import time
+import explorer_client
+from explorer_client.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.gavagai.se/explorer/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = explorer_client.Configuration(
+    host = "https://api.gavagai.se/explorer/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = explorer_client.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Enter a context with an instance of the API client
+with explorer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = explorer_client.ProjectsApi(api_client)
+    id = 56 # int | The id of the project
+version = 56 # int | The project version
+comparing_version = 56 # int | The project version to compare with
+
+    try:
+        # Compare project versions
+        api_response = api_instance.compare_project_versions(id, version, comparing_version)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ProjectsApi->compare_project_versions: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The id of the project | 
+ **version** | **int**| The project version | 
+ **comparing_version** | **int**| The project version to compare with | 
+
+### Return type
+
+[**ProjectVersionsChangeSet**](ProjectVersionsChangeSet.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **create_batch**
-> BatchId create_batch(id, batch_request=batch_request)
+> BatchId create_batch(id, batch_request)
 
 Start Batch Calculation
 
@@ -401,11 +562,11 @@ with explorer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = explorer_client.ProjectsApi(api_client)
     id = 56 # int | The id of the project
-batch_request = explorer_client.BatchRequest() # BatchRequest |  (optional)
+batch_request = explorer_client.BatchRequest() # BatchRequest | The batch request
 
     try:
         # Start Batch Calculation
-        api_response = api_instance.create_batch(id, batch_request=batch_request)
+        api_response = api_instance.create_batch(id, batch_request)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ProjectsApi->create_batch: %s\n" % e)
@@ -416,7 +577,7 @@ batch_request = explorer_client.BatchRequest() # BatchRequest |  (optional)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The id of the project | 
- **batch_request** | [**BatchRequest**](BatchRequest.md)|  | [optional] 
+ **batch_request** | [**BatchRequest**](BatchRequest.md)| The batch request | 
 
 ### Return type
 
@@ -820,7 +981,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_batch_result**
-> BatchId get_batch_result(id, batch_id)
+> BatchResponse get_batch_result(id, batch_id)
 
 Get Batch Calculation
 
@@ -876,7 +1037,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BatchId**](BatchId.md)
+[**BatchResponse**](BatchResponse.md)
 
 ### Authorization
 
@@ -1429,6 +1590,79 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_headers**
+> list[ColumnHeader] get_headers(id)
+
+Get project headers
+
+Get headers of the project
+
+### Example
+
+* Basic Authentication (basicAuth):
+```python
+from __future__ import print_function
+import time
+import explorer_client
+from explorer_client.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.gavagai.se/explorer/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = explorer_client.Configuration(
+    host = "https://api.gavagai.se/explorer/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = explorer_client.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Enter a context with an instance of the API client
+with explorer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = explorer_client.ProjectsApi(api_client)
+    id = 56 # int | The id of the project
+
+    try:
+        # Get project headers
+        api_response = api_instance.get_headers(id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ProjectsApi->get_headers: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The id of the project | 
+
+### Return type
+
+[**list[ColumnHeader]**](ColumnHeader.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A list of headers |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_matching_sentences_for_terms**
 > Sentences get_matching_sentences_for_terms(id, terms, max_sentences=max_sentences)
 
@@ -1659,76 +1893,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_project_languages**
-> list[str] get_project_languages()
-
-Get all supported languages
-
-This method returns all currently supported languages in the Explorer.
-
-### Example
-
-* Basic Authentication (basicAuth):
-```python
-from __future__ import print_function
-import time
-import explorer_client
-from explorer_client.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://api.gavagai.se/explorer/v1
-# See configuration.py for a list of all supported configuration parameters.
-configuration = explorer_client.Configuration(
-    host = "https://api.gavagai.se/explorer/v1"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure HTTP basic authorization: basicAuth
-configuration = explorer_client.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with explorer_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = explorer_client.ProjectsApi(api_client)
-    
-    try:
-        # Get all supported languages
-        api_response = api_instance.get_project_languages()
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling ProjectsApi->get_project_languages: %s\n" % e)
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-**list[str]**
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | success |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_project_languages1**
-> list[ProjectLanguage] get_project_languages1(id)
+> list[ProjectLanguage] get_project_languages(id)
 
 Get project languages
 
@@ -1768,10 +1933,10 @@ with explorer_client.ApiClient(configuration) as api_client:
 
     try:
         # Get project languages
-        api_response = api_instance.get_project_languages1(id)
+        api_response = api_instance.get_project_languages(id)
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling ProjectsApi->get_project_languages1: %s\n" % e)
+        print("Exception when calling ProjectsApi->get_project_languages: %s\n" % e)
 ```
 
 ### Parameters
@@ -2169,6 +2334,75 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_supported_languages**
+> list[str] get_supported_languages()
+
+Get all supported languages
+
+This method returns all currently supported languages in the Explorer.
+
+### Example
+
+* Basic Authentication (basicAuth):
+```python
+from __future__ import print_function
+import time
+import explorer_client
+from explorer_client.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.gavagai.se/explorer/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = explorer_client.Configuration(
+    host = "https://api.gavagai.se/explorer/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = explorer_client.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Enter a context with an instance of the API client
+with explorer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = explorer_client.ProjectsApi(api_client)
+    
+    try:
+        # Get all supported languages
+        api_response = api_instance.get_supported_languages()
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ProjectsApi->get_supported_languages: %s\n" % e)
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**list[str]**
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | success |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_term_details**
 > TermDetails get_term_details(id, terms=terms, associations=associations, first_result=first_result, page_size=page_size, sort_by_tonality=sort_by_tonality)
 
@@ -2318,6 +2552,154 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TonalitiesResponse**](TonalitiesResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_versions**
+> list[ProjectVersion] get_versions(id)
+
+Get project versions
+
+Get versions of the project
+
+### Example
+
+* Basic Authentication (basicAuth):
+```python
+from __future__ import print_function
+import time
+import explorer_client
+from explorer_client.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.gavagai.se/explorer/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = explorer_client.Configuration(
+    host = "https://api.gavagai.se/explorer/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = explorer_client.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Enter a context with an instance of the API client
+with explorer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = explorer_client.ProjectsApi(api_client)
+    id = 56 # int | The id of the project
+
+    try:
+        # Get project versions
+        api_response = api_instance.get_versions(id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ProjectsApi->get_versions: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The id of the project | 
+
+### Return type
+
+[**list[ProjectVersion]**](ProjectVersion.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A list of version |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **publish_version**
+> ModelVersion publish_version(id, version)
+
+Publish project version to model
+
+Publish project version to model
+
+### Example
+
+* Basic Authentication (basicAuth):
+```python
+from __future__ import print_function
+import time
+import explorer_client
+from explorer_client.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.gavagai.se/explorer/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = explorer_client.Configuration(
+    host = "https://api.gavagai.se/explorer/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = explorer_client.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Enter a context with an instance of the API client
+with explorer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = explorer_client.ProjectsApi(api_client)
+    id = 56 # int | The id of the project
+version = 56 # int | The version number
+
+    try:
+        # Publish project version to model
+        api_response = api_instance.publish_version(id, version)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ProjectsApi->publish_version: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The id of the project | 
+ **version** | **int**| The version number | 
+
+### Return type
+
+[**ModelVersion**](ModelVersion.md)
 
 ### Authorization
 
@@ -2849,6 +3231,80 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **revert_to_version**
+> revert_to_version(id, version)
+
+Revert to version
+
+Revert to a project version. A version revert will result in a new project version
+
+### Example
+
+* Basic Authentication (basicAuth):
+```python
+from __future__ import print_function
+import time
+import explorer_client
+from explorer_client.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.gavagai.se/explorer/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = explorer_client.Configuration(
+    host = "https://api.gavagai.se/explorer/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = explorer_client.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Enter a context with an instance of the API client
+with explorer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = explorer_client.ProjectsApi(api_client)
+    id = 56 # int | The id of the project
+version = 56 # int | The project version
+
+    try:
+        # Revert to version
+        api_instance.revert_to_version(id, version)
+    except ApiException as e:
+        print("Exception when calling ProjectsApi->revert_to_version: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The id of the project | 
+ **version** | **int**| The project version | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **search_for_project_terms**
 > list[str] search_for_project_terms(id, lookfor)
 
@@ -3246,6 +3702,78 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **stop_subscribing_to_updates**
+> stop_subscribing_to_updates(id)
+
+Stop subscribing to updates from a model
+
+Stop subscribing to updates from the model that the project is currently subscribing to.
+
+### Example
+
+* Basic Authentication (basicAuth):
+```python
+from __future__ import print_function
+import time
+import explorer_client
+from explorer_client.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.gavagai.se/explorer/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = explorer_client.Configuration(
+    host = "https://api.gavagai.se/explorer/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = explorer_client.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Enter a context with an instance of the API client
+with explorer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = explorer_client.ProjectsApi(api_client)
+    id = 56 # int | The id of the project
+
+    try:
+        # Stop subscribing to updates from a model
+        api_instance.stop_subscribing_to_updates(id)
+    except ApiException as e:
+        print("Exception when calling ProjectsApi->stop_subscribing_to_updates: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The id of the project | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **update_folder**
 > FolderInformation update_folder(folder_id, folder_request)
 
@@ -3304,6 +3832,83 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**FolderInformation**](FolderInformation.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_header**
+> ColumnHeader update_header(id, header_id, column_header_update)
+
+Update project header
+
+Update a project header
+
+### Example
+
+* Basic Authentication (basicAuth):
+```python
+from __future__ import print_function
+import time
+import explorer_client
+from explorer_client.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.gavagai.se/explorer/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = explorer_client.Configuration(
+    host = "https://api.gavagai.se/explorer/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = explorer_client.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Enter a context with an instance of the API client
+with explorer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = explorer_client.ProjectsApi(api_client)
+    id = 56 # int | The id of the project
+header_id = 56 # int | The id of the header
+column_header_update = explorer_client.ColumnHeaderUpdate() # ColumnHeaderUpdate | The request body
+
+    try:
+        # Update project header
+        api_response = api_instance.update_header(id, header_id, column_header_update)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ProjectsApi->update_header: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The id of the project | 
+ **header_id** | **int**| The id of the header | 
+ **column_header_update** | [**ColumnHeaderUpdate**](ColumnHeaderUpdate.md)| The request body | 
+
+### Return type
+
+[**ColumnHeader**](ColumnHeader.md)
 
 ### Authorization
 
@@ -3468,6 +4073,83 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | The model containing the updated information |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_version**
+> ProjectVersion update_version(id, version, project_version_update)
+
+Update version
+
+Update a project version
+
+### Example
+
+* Basic Authentication (basicAuth):
+```python
+from __future__ import print_function
+import time
+import explorer_client
+from explorer_client.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.gavagai.se/explorer/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = explorer_client.Configuration(
+    host = "https://api.gavagai.se/explorer/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = explorer_client.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Enter a context with an instance of the API client
+with explorer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = explorer_client.ProjectsApi(api_client)
+    id = 56 # int | The id of the project
+version = 56 # int | The project version
+project_version_update = explorer_client.ProjectVersionUpdate() # ProjectVersionUpdate | The update request
+
+    try:
+        # Update version
+        api_response = api_instance.update_version(id, version, project_version_update)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ProjectsApi->update_version: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The id of the project | 
+ **version** | **int**| The project version | 
+ **project_version_update** | [**ProjectVersionUpdate**](ProjectVersionUpdate.md)| The update request | 
+
+### Return type
+
+[**ProjectVersion**](ProjectVersion.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3711,4 +4393,3 @@ Name | Type | Description  | Notes
 **200** | Success |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

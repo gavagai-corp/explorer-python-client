@@ -16,8 +16,6 @@ Name | Type | Description | Notes
 **tonality_customization_id** | **int** |  | [optional] 
 **coverage_statistics** | [**CoverageStatistics**](CoverageStatistics.md) |  | [optional] 
 **project_tonalities** | [**ProjectDocumentTonalities**](ProjectDocumentTonalities.md) |  | [optional] 
-**ignore_terms_dictionary** | **dict(str, str)** |  | [optional] 
-**model_change_set** | [**ModelChangeSet**](ModelChangeSet.md) |  | [optional] 
 **filter_by_language** | **bool** |  | [optional] 
 **query_filter** | **bool** |  | [optional] 
 **drivers** | [**list[DriverResponse]**](DriverResponse.md) |  | [optional] 
