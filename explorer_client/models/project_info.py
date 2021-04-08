@@ -42,6 +42,7 @@ class ProjectInfo(object):
         'status_message': 'str',
         'headers': 'list[ColumnHeader]',
         'model': 'ModelInfo',
+        'subscribed_model': 'SubscribedModel',
         'created_by': 'User'
     }
 
@@ -55,10 +56,11 @@ class ProjectInfo(object):
         'status_message': 'statusMessage',
         'headers': 'headers',
         'model': 'model',
+        'subscribed_model': 'subscribedModel',
         'created_by': 'createdBy'
     }
 
-    def __init__(self, id=None, title=None, rows=None, created=None, encoding=None, status=None, status_message=None, headers=None, model=None, created_by=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, title=None, rows=None, created=None, encoding=None, status=None, status_message=None, headers=None, model=None, subscribed_model=None, created_by=None, local_vars_configuration=None):  # noqa: E501
         """ProjectInfo - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -73,6 +75,7 @@ class ProjectInfo(object):
         self._status_message = None
         self._headers = None
         self._model = None
+        self._subscribed_model = None
         self._created_by = None
         self.discriminator = None
 
@@ -94,6 +97,8 @@ class ProjectInfo(object):
             self.headers = headers
         if model is not None:
             self.model = model
+        if subscribed_model is not None:
+            self.subscribed_model = subscribed_model
         if created_by is not None:
             self.created_by = created_by
 
@@ -291,6 +296,27 @@ class ProjectInfo(object):
         """
 
         self._model = model
+
+    @property
+    def subscribed_model(self):
+        """Gets the subscribed_model of this ProjectInfo.  # noqa: E501
+
+
+        :return: The subscribed_model of this ProjectInfo.  # noqa: E501
+        :rtype: SubscribedModel
+        """
+        return self._subscribed_model
+
+    @subscribed_model.setter
+    def subscribed_model(self, subscribed_model):
+        """Sets the subscribed_model of this ProjectInfo.
+
+
+        :param subscribed_model: The subscribed_model of this ProjectInfo.  # noqa: E501
+        :type subscribed_model: SubscribedModel
+        """
+
+        self._subscribed_model = subscribed_model
 
     @property
     def created_by(self):

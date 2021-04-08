@@ -45,7 +45,7 @@ class Project(object):
         'history': 'list[HistoryLog]',
         'settings': 'list[ProjectSetting]',
         'model': 'ModelInfo',
-        'subscribed_model_version': 'ModelVersion',
+        'subscribed_model': 'SubscribedModel',
         'created_by': 'User'
     }
 
@@ -62,11 +62,11 @@ class Project(object):
         'history': 'history',
         'settings': 'settings',
         'model': 'model',
-        'subscribed_model_version': 'subscribedModelVersion',
+        'subscribed_model': 'subscribedModel',
         'created_by': 'createdBy'
     }
 
-    def __init__(self, id=None, title=None, rows=None, created=None, encoding=None, status=None, status_message=None, headers=None, reports=None, history=None, settings=None, model=None, subscribed_model_version=None, created_by=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, title=None, rows=None, created=None, encoding=None, status=None, status_message=None, headers=None, reports=None, history=None, settings=None, model=None, subscribed_model=None, created_by=None, local_vars_configuration=None):  # noqa: E501
         """Project - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -84,7 +84,7 @@ class Project(object):
         self._history = None
         self._settings = None
         self._model = None
-        self._subscribed_model_version = None
+        self._subscribed_model = None
         self._created_by = None
         self.discriminator = None
 
@@ -112,8 +112,8 @@ class Project(object):
             self.settings = settings
         if model is not None:
             self.model = model
-        if subscribed_model_version is not None:
-            self.subscribed_model_version = subscribed_model_version
+        if subscribed_model is not None:
+            self.subscribed_model = subscribed_model
         if created_by is not None:
             self.created_by = created_by
 
@@ -376,25 +376,25 @@ class Project(object):
         self._model = model
 
     @property
-    def subscribed_model_version(self):
-        """Gets the subscribed_model_version of this Project.  # noqa: E501
+    def subscribed_model(self):
+        """Gets the subscribed_model of this Project.  # noqa: E501
 
 
-        :return: The subscribed_model_version of this Project.  # noqa: E501
-        :rtype: ModelVersion
+        :return: The subscribed_model of this Project.  # noqa: E501
+        :rtype: SubscribedModel
         """
-        return self._subscribed_model_version
+        return self._subscribed_model
 
-    @subscribed_model_version.setter
-    def subscribed_model_version(self, subscribed_model_version):
-        """Sets the subscribed_model_version of this Project.
+    @subscribed_model.setter
+    def subscribed_model(self, subscribed_model):
+        """Sets the subscribed_model of this Project.
 
 
-        :param subscribed_model_version: The subscribed_model_version of this Project.  # noqa: E501
-        :type subscribed_model_version: ModelVersion
+        :param subscribed_model: The subscribed_model of this Project.  # noqa: E501
+        :type subscribed_model: SubscribedModel
         """
 
-        self._subscribed_model_version = subscribed_model_version
+        self._subscribed_model = subscribed_model
 
     @property
     def created_by(self):

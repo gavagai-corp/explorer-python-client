@@ -170,6 +170,7 @@ from explorer_client.models.sentences import Sentences
 from explorer_client.models.stories_request import StoriesRequest
 from explorer_client.models.stories_response import StoriesResponse
 from explorer_client.models.story import Story
+from explorer_client.models.subscribed_model import SubscribedModel
 from explorer_client.models.suggestion import Suggestion
 from explorer_client.models.suggestions_request import SuggestionsRequest
 from explorer_client.models.suggestions_result import SuggestionsResult

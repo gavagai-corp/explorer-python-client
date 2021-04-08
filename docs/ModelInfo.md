@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **created** | **int** |  | [optional] 
 **created_by** | [**User**](User.md) |  | [optional] 
 **type** | **str** |  | [optional] 
-**outdated** | **bool** |  | [optional] 
 **language** | **str** |  | [optional] 
 **project** | [**ProjectDetails**](ProjectDetails.md) |  | [optional] 
 **latest_version** | [**ModelVersion**](ModelVersion.md) |  | [optional] 
