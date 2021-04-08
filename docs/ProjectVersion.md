@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **version** | **int** |  | [optional] 
 **name** | **str** |  | [optional] 
-**created** | **datetime** |  | [optional] 
+**created** | **int** |  | [optional] 
 **project_id** | **int** |  | [optional] 
 **model_version** | [**ModelVersion**](ModelVersion.md) |  | [optional] 
 

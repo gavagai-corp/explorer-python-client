@@ -35,7 +35,7 @@ class ProjectVersion(object):
     openapi_types = {
         'version': 'int',
         'name': 'str',
-        'created': 'datetime',
+        'created': 'int',
         'project_id': 'int',
         'model_version': 'ModelVersion'
     }
@@ -120,7 +120,7 @@ class ProjectVersion(object):
 
 
         :return: The created of this ProjectVersion.  # noqa: E501
-        :rtype: datetime
+        :rtype: int
         """
         return self._created
 
@@ -130,7 +130,7 @@ class ProjectVersion(object):
 
 
         :param created: The created of this ProjectVersion.  # noqa: E501
-        :type created: datetime
+        :type created: int
         """
 
         self._created = created
