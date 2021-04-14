@@ -36,17 +36,19 @@ class BatchTextResponse(object):
         'id': 'str',
         'text': 'str',
         'matching_topic_ids': 'list[int]',
-        'tonalities': 'list[BatchTextTonality]'
+        'tonalities': 'list[BatchTextTonality]',
+        'matching_driver_ids': 'list[int]'
     }
 
     attribute_map = {
         'id': 'id',
         'text': 'text',
         'matching_topic_ids': 'matchingTopicIds',
-        'tonalities': 'tonalities'
+        'tonalities': 'tonalities',
+        'matching_driver_ids': 'matchingDriverIds'
     }
 
-    def __init__(self, id=None, text=None, matching_topic_ids=None, tonalities=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, text=None, matching_topic_ids=None, tonalities=None, matching_driver_ids=None, local_vars_configuration=None):  # noqa: E501
         """BatchTextResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -56,6 +58,7 @@ class BatchTextResponse(object):
         self._text = None
         self._matching_topic_ids = None
         self._tonalities = None
+        self._matching_driver_ids = None
         self.discriminator = None
 
         if id is not None:
@@ -66,6 +69,8 @@ class BatchTextResponse(object):
             self.matching_topic_ids = matching_topic_ids
         if tonalities is not None:
             self.tonalities = tonalities
+        if matching_driver_ids is not None:
+            self.matching_driver_ids = matching_driver_ids
 
     @property
     def id(self):
@@ -150,6 +155,27 @@ class BatchTextResponse(object):
         """
 
         self._tonalities = tonalities
+
+    @property
+    def matching_driver_ids(self):
+        """Gets the matching_driver_ids of this BatchTextResponse.  # noqa: E501
+
+
+        :return: The matching_driver_ids of this BatchTextResponse.  # noqa: E501
+        :rtype: list[int]
+        """
+        return self._matching_driver_ids
+
+    @matching_driver_ids.setter
+    def matching_driver_ids(self, matching_driver_ids):
+        """Sets the matching_driver_ids of this BatchTextResponse.
+
+
+        :param matching_driver_ids: The matching_driver_ids of this BatchTextResponse.  # noqa: E501
+        :type matching_driver_ids: list[int]
+        """
+
+        self._matching_driver_ids = matching_driver_ids
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

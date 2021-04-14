@@ -42,7 +42,6 @@ Method | HTTP request | Description
 [**remove_folder**](ProjectsApi.md#remove_folder) | **DELETE** /projects/folders/{id} | Remove folder
 [**remove_folder_from_folder**](ProjectsApi.md#remove_folder_from_folder) | **DELETE** /projects/folders/{id}/folders/{subFolderId} | Remove sub folder from folder
 [**remove_history**](ProjectsApi.md#remove_history) | **DELETE** /projects/{id}/history/{historyId} | Remove history log
-[**remove_model_from_project**](ProjectsApi.md#remove_model_from_project) | **DELETE** /projects/{id}/model | Detach model from project
 [**remove_project**](ProjectsApi.md#remove_project) | **DELETE** /projects/{id} | Remove project
 [**remove_project_from_folder**](ProjectsApi.md#remove_project_from_folder) | **DELETE** /projects/folders/{id}/projects/{projectId} | Remove project from folder
 [**remove_report**](ProjectsApi.md#remove_report) | **DELETE** /projects/{id}/reports/{reportId} | Remove report
@@ -56,7 +55,6 @@ Method | HTTP request | Description
 [**update_folder**](ProjectsApi.md#update_folder) | **PUT** /projects/folders/{folderId} | Update folder
 [**update_header**](ProjectsApi.md#update_header) | **PUT** /projects/{id}/headers/{headerId} | Update project header
 [**update_project**](ProjectsApi.md#update_project) | **PUT** /projects/{id} | Update project
-[**update_project_model**](ProjectsApi.md#update_project_model) | **PUT** /projects/{id}/model | Update Project Model
 [**update_version**](ProjectsApi.md#update_version) | **PUT** /projects/{id}/versions/{version} | Update version
 [**upload_project**](ProjectsApi.md#upload_project) | **POST** /projects | Create project
 [**upload_project_file**](ProjectsApi.md#upload_project_file) | **POST** /projects | Create project
@@ -2938,78 +2936,6 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **remove_model_from_project**
-> remove_model_from_project(id)
-
-Detach model from project
-
-Detach the model from the project. If the dynamic model was created from the project, all dependent projects will receive the corresponding update. Alternatively, if the model was applied to the project, only that version of the model will be impacted. Note that the only possible update in this scenario is an update of translations.
-
-### Example
-
-* Basic Authentication (basicAuth):
-```python
-from __future__ import print_function
-import time
-import explorer_client
-from explorer_client.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://api.gavagai.se/explorer/v1
-# See configuration.py for a list of all supported configuration parameters.
-configuration = explorer_client.Configuration(
-    host = "https://api.gavagai.se/explorer/v1"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure HTTP basic authorization: basicAuth
-configuration = explorer_client.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with explorer_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = explorer_client.ProjectsApi(api_client)
-    id = 56 # int | The project identifier
-
-    try:
-        # Detach model from project
-        api_instance.remove_model_from_project(id)
-    except ApiException as e:
-        print("Exception when calling ProjectsApi->remove_model_from_project: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The project identifier | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | The model containing the updated information. |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **remove_project**
 > remove_project(id)
 
@@ -3998,81 +3924,6 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | he project containing the updated information |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **update_project_model**
-> Model update_project_model(id, model_input)
-
-Update Project Model
-
-Updates the model to which a project is connected. If the dynamic model was created from the project, all dependent projects will receive the corresponding update. Alternatively, if the model was applied to the project, only that version of the model will be impacted. Note that the only possible update in this scenario is an update of translations.
-
-### Example
-
-* Basic Authentication (basicAuth):
-```python
-from __future__ import print_function
-import time
-import explorer_client
-from explorer_client.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://api.gavagai.se/explorer/v1
-# See configuration.py for a list of all supported configuration parameters.
-configuration = explorer_client.Configuration(
-    host = "https://api.gavagai.se/explorer/v1"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure HTTP basic authorization: basicAuth
-configuration = explorer_client.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with explorer_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = explorer_client.ProjectsApi(api_client)
-    id = 56 # int | The id of the project
-model_input = explorer_client.ModelInput() # ModelInput | The information with which to update the project.
-
-    try:
-        # Update Project Model
-        api_response = api_instance.update_project_model(id, model_input)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling ProjectsApi->update_project_model: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The id of the project | 
- **model_input** | [**ModelInput**](ModelInput.md)| The information with which to update the project. | 
-
-### Return type
-
-[**Model**](Model.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | The model containing the updated information |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

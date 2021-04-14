@@ -58,6 +58,7 @@ from explorer_client.models.document_reference import DocumentReference
 from explorer_client.models.document_sentences import DocumentSentences
 from explorer_client.models.driver import Driver
 from explorer_client.models.driver_change_set import DriverChangeSet
+from explorer_client.models.driver_definition import DriverDefinition
 from explorer_client.models.driver_request import DriverRequest
 from explorer_client.models.driver_response import DriverResponse
 from explorer_client.models.exploration_status import ExplorationStatus
@@ -100,8 +101,6 @@ from explorer_client.models.model_change_set import ModelChangeSet
 from explorer_client.models.model_group import ModelGroup
 from explorer_client.models.model_info import ModelInfo
 from explorer_client.models.model_input import ModelInput
-from explorer_client.models.model_invitation import ModelInvitation
-from explorer_client.models.model_projects import ModelProjects
 from explorer_client.models.model_translation_candidates import ModelTranslationCandidates
 from explorer_client.models.model_update import ModelUpdate
 from explorer_client.models.model_version import ModelVersion
